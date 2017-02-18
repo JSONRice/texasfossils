@@ -5,4 +5,4 @@ all.js
 all.css
 port*
 coverage
-/nbproject/private/
+nbproject
