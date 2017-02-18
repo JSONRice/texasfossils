@@ -1,0 +1,123 @@
+/**
+ * Color scheme. Colors are listed in alphabetic order. Only use these colors.
+ */
+
+/* white colors */
+@white-smoke: #F5F5F5;
+@white-smog: #F0F0F0;
+
+/* dark and grey colors */
+@charcoal: #101010;
+@cornflower-blue: #6495ED;
+@darkgray: #757571;
+@gray: #A9A9A9;
+@gray-light: #B0ABA0;
+
+/* complimentary colors */
+@aquamarine: #7FFFD4;
+@cornflower-blue: #6495ED;
+@blue-light: #6ABED8;
+@maroon: #A52A2A;
+@darkmaroon: #5E1D3A;
+
+.hide {
+    display: none;
+}
+
+/**
+ * Responsive design:
+ */
+
+/********** Large devices only **********/
+@media (min-width: 1200px) {
+    .responsive-break {
+        display: none;
+    }
+}
+
+/********** Medium devices only **********/
+@media (min-width: 992px) and (max-width: 1199px) {    
+    .responsive-break {
+        .hide;
+    }
+}
+
+/********** Small devices only **********/
+@media (min-width: 0px) and (max-width: 991px) {    
+    .responsive-break {
+        .hide;
+    }
+}
+
+
+
+
+
+.logo {
+    background: black url("../../images/texasfossils_white.png") no-repeat 1% 10px;
+    height: 110px; /* logo is 87px */
+    background-color: bisque;
+    width: available;
+    // center image:
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;    
+}
+
+.navbar-brand {
+    height: 90px;
+}
+
+body {
+    background-image: url("../../images/leather.png");
+}
+
+.navbar {
+    margin-bottom: 0px !important;
+    border: 0px !important;
+    border-radius: 0px !important;
+    background-color: @charcoal;
+}
+
+.home-tree {
+    width:250px;
+    background: @white-smoke;
+    border:1px solid @gray-light;    
+}
+
+.form-signin {
+    max-width: 400px;
+    padding: 19px 29px 29px;
+    border: 2px solid black;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);    
+    margin: 0 auto 20px;
+    background-color: #fff;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+.form-signin input[type="text"],
+.form-signin input[type="password"] {
+    font-size: 16px;
+    height: auto;
+    margin-bottom: 15px;
+    padding: 7px 9px;
+}
+
+// Mock the navbar > a tag
+.mock-a {
+    color: @white-smoke !important;
+    padding-top:15px;
+    line-height:20px;
+    cursor:default;    
+}
+
+.logout-li > a {
+    color: @cornflower-blue !important;    
+}

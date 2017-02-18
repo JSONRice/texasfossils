@@ -1,0 +1,15 @@
+<div id="menu" ng-controller="MenuController">
+    <div class="row col-lg-11 col-md-11 col-sm-11 col-xs-11 col-xxs-11">
+        Welcome to Texas Fossils. My name is Kris and below are a few pictures of myself along with my mission statement. 
+        Click on any of items in the menu on the left for more content.
+    </div>
+    <div class="col-lg-4 col-md-11 col-sm-11 col-xs-11 col-xxs-11" ng-repeat="item in menuData| limitTo:3">
+        <div>
+            <a href="{{item.image.url}}">
+                <img src="{{item.image.url}}" alt="{{item.image.alt}}" class="img-responsive img-rounded" style="width:350px;height:250px;">
+                <br/>
+                <p class="caption">{{item.image.desc}}</p>
+            </a>
+        </div>
+    </div>
+</div>
