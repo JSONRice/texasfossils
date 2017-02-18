@@ -9,61 +9,21 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-var MongoConnector = require('connect-mongo')(session);
 var debug = require('debug')('node:server');
 var fs = require('fs');
 var bodyParser = require('body-parser');
-var passport = require('passport');
-var localStrategy = require('passport-local' ).Strategy;
-
 
 // app object handle
 var app = express();
 
 // Setup dependency injection and list paths with ElectrolyteJS (Inversion of Control)
 var ioc = require('electrolyte');
-ioc.use(ioc.node('models'));
-ioc.use(ioc.node('services'));
-ioc.use(ioc.node('controllers'));
-ioc.use(ioc.node('utils'));
+ioc.use(ioc.dir('models'));
+ioc.use(ioc.dir('services'));
+ioc.use(ioc.dir('controllers'));
+ioc.use(ioc.dir('utils'));
 ioc.use(ioc.node_modules());
 
-// create objects from IoC here:
-var database = ioc.create('database');
-
-/* TODO: setup user authentication (login) services over HTTPS
-var ssl = ioc.create('ssl');
-var authService = ioc.create('authService');
-var userService = ioc.create('userService');
-*/
-
-// connect to the database:
-database.connect(function (err) {
-    if (err) {
-        console.log("Unable to connect to the Mongo database! Make sure 'mongod' is running.");
-        console.log(err);
-        process.exit(-1);
-    } else {
-        console.log("Connected to Mongo database.");
-    }
-});
-
-// Schemas
-var user = require('./models/user.js');
-
-// security
-app.use(require('express-session')({
-    secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: false
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-passport.use(new localStrategy(user.authenticate()));
-passport.serializeUser(user.serializeUser());
-passport.deserializeUser(user.deserializeUser());
-
- 
 // set routes up:
 var routes = {
     index: require('./routes/index.js'),
@@ -76,17 +36,6 @@ app.set('view engine', 'ejs');
 app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')));
 app.use(logger('dev'));
 
-// database settings for app
-app.use(session({
-    store: new MongoConnector({
-        mongooseConnection: database.getConnection(),
-        // time to live:
-        ttl: 3360
-    }),
-    secret: 'ChangeMe1',
-    resave: true,
-    saveUninitialized: true
-}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
@@ -126,12 +75,13 @@ var server = http.createServer(app);
 
 // listen on provided port, on all network interfaces.
 
-var SERVER = '192.168.1.254';
+//var SERVER = '192.168.1.254';
 //var SERVER = '108.18.215.78'; 
 var PORT = '9457';
-server.listen(PORT, SERVER, function () {
+// Can add a second middle param with the SERVER IPv4. Default is localhost.
+server.listen(PORT, function () {
     // callback:
-    console.log("Server listening on: %s:%s", SERVER, PORT);
+    console.log("Server listening on PORT: %s", PORT);
 });
 server.on('error', onError);
 server.on('listening', onListening);
@@ -148,7 +98,6 @@ function normalizePort(val) {
     }
     return false;
 }
-;
 
 // error handler function
 function onError(error) {
@@ -170,7 +119,7 @@ function onError(error) {
         default:
             throw error;
     }
-};
+}
 
 function loadDefaultPage(socket) {
     fs.readFile('./public/templates/index.html', function (err, html) {
@@ -186,4 +135,4 @@ function onListening() {
     // unix (file) pipe (IPC) or network port:
     var bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
     loadDefaultPage(bind);
-};
+}

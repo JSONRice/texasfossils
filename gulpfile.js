@@ -13,7 +13,7 @@ var merge = require('merge-stream');
 
 // Lint (JSHint) Task
 gulp.task('lint', function () {
-  return gulp.src([
+  return gulp.src([    
     './controllers/**/*.js',
     './models/**/*.js',
     './routes/**/*.js',
@@ -23,7 +23,9 @@ gulp.task('lint', function () {
     './public/javascript/**/*.js',
     // don't lint packaged or minified code
     // 9 out of 10 times this is optimized (e.g. no semicolons)
-    '!./public/javascript/dist/*'
+    '!./public/javascript/dist/*',
+    // Don't lint the custom Tree directive. This guy is finicky and works AS-IS:
+    '!./public/javascript/directives/tree.js'
   ])
           .pipe(jshint()).pipe(jshint.reporter('default'));
 });
