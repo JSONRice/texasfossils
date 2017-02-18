@@ -30,9 +30,9 @@ angular.module('texasfossils').controller('TreeController', [
         },
         children: [
           {
-            label: 'MEAN Stack Introduction',
+            label: 'About',
             data: {
-              url: 'templates/tutorials/toc/meanIntro/meanIntro.html'
+              url: 'templates/about.html'
             },
             children: [
               {
