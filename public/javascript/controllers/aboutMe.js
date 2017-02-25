@@ -3,9 +3,7 @@
  */
 angular.module('texasfossils').controller('AboutMe', [
   '$scope',
-  '$location',
-  'AjaxService',
-  function ($scope, $location, ajaxService) {
+  function ($scope) {
     $scope.imageUrl = 'http://texasfossils.webs.com/Flexo%20Conf%201%20Small.jpg';
     $scope.imageAlt = 'Presenting before an audience about fossil birds in Texas.';    
     $scope.p1 = "My name is Kris Howe. I have been collecting fossils for 35 years. I live in Dallas, Texas and regularly get into the field for collecting trips. I enjoy collecting and prepairing fossils. Many of the fossils that I find are donated to the Museum of Nature and Science, Dallas.";
