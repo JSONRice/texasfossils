@@ -21,7 +21,7 @@
 @darkmaroon: #5E1D3A;
 
 .hide {
-    display: none;
+  display: none;
 }
 
 /**
@@ -30,34 +30,34 @@
 
 /********** Large devices only **********/
 @media (min-width: 1200px) {
-    .responsive-break {
-        display: none;
-    }
+  .responsive-break {
+    display: none;
+  }
 }
 
 /********** Medium devices only **********/
 @media (min-width: 992px) and (max-width: 1199px) {    
-    .responsive-break {
-        .hide;
-    }
+  .responsive-break {
+    .hide;
+  }
 }
 
 /********** Small devices only **********/
 @media (min-width: 0px) and (max-width: 991px) {    
-    .responsive-break {
-        .hide;
-    }
+  .responsive-break {
+    .hide;
+  }
 }
 
 .logo {
-    background: black url("../../images/texasfossils_white.png") no-repeat 1% 10px;
-    height: 110px; /* logo is 87px */
-    background-color: bisque;
-    width: available;
-    // center image:
-    display: block !important;
-    margin-left: auto !important;
-    margin-right: auto !important;    
+  background: black url("../../images/texasfossils_white.png") no-repeat 1% 10px;
+  height: 110px; /* logo is 87px */
+  background-color: bisque;
+  width: available;
+  // center image:
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;    
 }
 
 /* BOOSTRAP OVERRIDES */
@@ -67,60 +67,64 @@ td, th {
   padding-left: 0px !important;
 }
 
+p {
+  margin: 20px 0px 20px 0px !important;
+} 
+
 .navbar-brand {
-    height: 90px;
+  height: 90px;
 }
 
 body {
-    background-image: url("../../images/leather.png");
+  background-image: url("../../images/leather.png");
 }
 
 .navbar {
-    margin-bottom: 0px !important;
-    border: 0px !important;
-    border-radius: 0px !important;
-    background-color: @charcoal;
+  margin-bottom: 0px !important;
+  border: 0px !important;
+  border-radius: 0px !important;
+  background-color: @charcoal;
 }
 
 .home-tree {
-    width:250px;
-    background: @white-smoke;
-    border:1px solid @gray-light;    
+  width:250px;
+  background: @white-smoke;
+  border:1px solid @gray-light;    
 }
 
 .form-signin {
-    max-width: 400px;
-    padding: 19px 29px 29px;
-    border: 2px solid black;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-    box-shadow: 0 1px 2px rgba(0,0,0,.05);    
-    margin: 0 auto 20px;
-    background-color: #fff;
+  max-width: 400px;
+  padding: 19px 29px 29px;
+  border: 2px solid black;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  box-shadow: 0 1px 2px rgba(0,0,0,.05);    
+  margin: 0 auto 20px;
+  background-color: #fff;
 }
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 .form-signin input[type="text"],
 .form-signin input[type="password"] {
-    font-size: 16px;
-    height: auto;
-    margin-bottom: 15px;
-    padding: 7px 9px;
+  font-size: 16px;
+  height: auto;
+  margin-bottom: 15px;
+  padding: 7px 9px;
 }
 
 // Mock the navbar > a tag
 .mock-a {
-    color: @white-smoke !important;
-    padding-top:15px;
-    line-height:20px;
-    cursor:default;    
+  color: @white-smoke !important;
+  padding-top:15px;
+  line-height:20px;
+  cursor:default;    
 }
 
 .logout-li > a {
-    color: @cornflower-blue !important;    
+  color: @cornflower-blue !important;    
 }
