@@ -30,47 +30,21 @@ angular.module('texasfossils').controller('TreeController', [
         },
         children: [
           {
-            label: 'MEAN Stack Introduction',
+            label: 'About Me',
             data: {
-              url: 'templates/tutorials/toc/meanIntro/meanIntro.html'
-            },
-            children: [
-              {
-                label: 'MongoDB',
-                data: {
-                  url: 'templates/tutorials/toc/meanIntro/mongo.html'
-                }
-              },
-              {
-                label: 'ExpressJS',
-                data: {
-                  url: 'templates/tutorials/toc/meanIntro/express.html'
-                }
-              },
-              {
-                label: 'AngularJS',
-                data: {
-                  url: 'templates/tutorials/toc/meanIntro/angular.html'
-                }
-              },
-              {
-                label: 'NodeJS',
-                data: {
-                  url: 'templates/tutorials/toc/meanIntro/node.html'
-                }
-              }
-            ]
+              url: 'templates/menu/aboutme.html'
+            }
           },
           {
-            label: 'Server Side Overview',
+            label: 'Discoveries',
             data: {
-              url: 'templates/tutorials/toc/serverSideOverview/serverSideOverview.html'
+              url: 'templates/menu/discoveries/discoveries.html'
             },
             children: [
               {
-                label: 'NodeJS Setup',
+                label: 'Flexomornis howei',
                 data: {
-                  url: "templates/tutorials/toc/serverSideOverview/nodeSetup.html"
+                  url: "templates/menu/discoveries/flexomornis_howei.html"
                 }
               },
               {
