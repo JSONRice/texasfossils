@@ -44,88 +44,14 @@ angular.module('texasfossils').controller('TreeController', [
               {
                 label: 'Flexomornis howei',
                 data: {
-                  url: "templates/menu/discoveries/flexomornis_howei.html"
+                  url: "templates/menu/discoveries/flexo.html"
                 }
               },
               {
-                label: 'ExpressJS Setup',
+                label: 'Xiphactinus',
                 data: {
-                  url: "templates/tutorials/toc/serverSideOverview/expressSetup/expressSetup.html"
-                },
-                children: [
-                  {
-                    label: 'ElectrolyteJS',
-                    data: {
-                      url: "templates/tutorials/toc/serverSideOverview/expressSetup/electrolyte.html"
-                    }
-                  }
-                ]
-              },
-              {
-                label: 'Mongo Setup',
-                data: {
-                  url: "templates/tutorials/toc/serverSideOverview/mongoSetup/mongoSetup.html"
-                },
-                children: [
-                  {
-                    label: 'Mongoose Setup',
-                    data: {
-                      url: "templates/tutorials/toc/serverSideOverview/mongoSetup/mongooseSetup.html"
-                    }
-                  }
-                ]
-              },
-              {
-                label: 'Gulp and Test Setup',
-                data: {
-                  url: "templates/tutorials/toc/serverSideOverview/gulpSetup.html"
+                  url: "templates/menu/discoveries/xiphactinus.html"
                 }
-              }
-            ]
-          },
-          {
-            label: 'Client Side Overview',
-            data: {
-              url: 'templates/tutorials/toc/clientSideOverview/clientSideOverview.html'
-            },
-            children: [
-              {
-                label: 'Angular Basics',
-                data: {
-                  url: 'templates/tutorials/toc/clientSideOverview/angularBasics.html'
-                }
-              },
-              {
-                label: 'Angular UI',
-                data: {
-                  url: 'templates/tutorials/toc/clientSideOverview/angularUI/angularUI.html'
-                },
-                children: [
-                  {
-                    label: 'Tree Table of Contents',
-                    data: {
-                      url: 'templates/tutorials/toc/clientSideOverview/angularUI/angularUITreeToC.html'
-                    }
-                  },
-                  {
-                    label: 'Inline Table of Contents',
-                    data: {
-                      url: 'templates/tutorials/toc/clientSideOverview/angularUI/angularUIInToC.html'
-                    }
-                  },
-                  {
-                    label: 'Modals (Dialogs)',
-                    data: {
-                      url: 'templates/tutorials/toc/clientSideOverview/angularUI/angularUIModals.html'
-                    }
-                  },
-                  {
-                    label: 'Calendar',
-                    data: {
-                      url: 'templates/tutorials/toc/clientSideOverview/angularUI/angularUICalendar.html'
-                    }
-                  }
-                ]
               }
             ]
           }

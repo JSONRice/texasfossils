@@ -8,6 +8,14 @@ var texasfossils = angular.module('texasfossils', [
   'ui.select', 'ui.keypress', 'nvd3', 'ngLodash', 'angularSpinner'
 ]);
 
+// See: https://solidfoundationwebdev.com/blog/posts/how-to-use-underscore-in-your-angularjs-controllers
+// There is no Angular underscore module, so this binds it on the window.
+var underscore = angular.module('underscore', []);
+underscore.factory('_', ['$window', function () {
+    return $window._;
+  }
+]);
+
 // Custom filter to take string and trust as html
 texasfossils.filter('htmlify', function ($sce) {
   return function (val) {
@@ -39,15 +47,15 @@ texasfossils.config(['$routeProvider', '$locationProvider', function ($routeProv
       controller: 'TreeController',
       access: {restricted: false}
     })
-    .when('/home', {
-      templateUrl: '../templates/home.html',
-      controller: 'HomeController',
-      access: {restricted: false}
-    })
-    .otherwise({
-      redirectTo: '/home'
-    });
-    
+            .when('/home', {
+              templateUrl: '../templates/home.html',
+              controller: 'HomeController',
+              access: {restricted: false}
+            })
+            .otherwise({
+              redirectTo: '/home'
+            });
+
     // use the HTML5 History API
     // $locationProvider.html5Mode(true);    
   }

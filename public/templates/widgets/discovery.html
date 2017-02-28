@@ -1,0 +1,11 @@
+<div class="container-fluid" ng-repeat="image in data.images">
+  <div class="row col-lg-12 col-md-6 col-sm-6">
+    <figure class="figure">
+      <img ng-src="{{image.uri}}" class="figure-img img-fluid img-rounded img-responsive" alt="image.desc">
+      <br/>
+      <figcaption class="figure-caption" ng-bind='image.caption'></figcaption>
+    </figure>
+    <hr/>
+  </div>
+  <br/>
+</div>
