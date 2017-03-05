@@ -9,6 +9,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+var MongoConnector = require('connect-mongo')(session);
 var debug = require('debug')('node:server');
 var fs = require('fs');
 var bodyParser = require('body-parser');
@@ -22,7 +23,37 @@ ioc.use(ioc.dir('models'));
 ioc.use(ioc.dir('services'));
 ioc.use(ioc.dir('controllers'));
 ioc.use(ioc.dir('utils'));
+ioc.use(ioc.dir('config'));
 ioc.use(ioc.node_modules());
+
+// create components (objects) from the Electrolyte IoC mechanism here:
+var database = ioc.create('database');
+
+// connect to the database:
+database.connect(function (err) {
+  if (err) {
+    console.log("Unable to connect to the Mongo database! Make sure 'mongod' is running.");
+    console.log(err);
+    process.exit(-1);
+  } else {
+    console.log("Connected to Mongo database.");
+  }
+});
+
+// database settings for app
+app.use(session({
+  store: new MongoConnector({
+    mongooseConnection: database.getConnection(),
+    // time to live:
+    ttl: 3360
+  }),
+  secret: 'ChangeMe1',
+  resave: true,
+  saveUninitialized: true
+}));
+
+// Schemas:
+var image = require('./models/image.js');
 
 // set routes up:
 var routes = {

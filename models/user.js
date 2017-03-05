@@ -1,9 +1,9 @@
 // User database model entity that represents a Mongo collection
 var mongoose = require('mongoose');
-var schema = mongoose.Schema;
+var Schema = mongoose.Schema;
 var passportLocalMongoose = require('passport-local-mongoose');
 
-var user = new schema({
+var user = new Schema({
   // OPTIONAL-TODO: ensure username is an email address
   username: {
     type: String,

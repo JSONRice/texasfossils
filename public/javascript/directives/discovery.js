@@ -7,8 +7,8 @@ texasfossils.directive('discovery', [
       /**
        * Isolated Scope: pass some values from the parent scope to the directives
        * There’re 3 types of prefixes AngularJS provides
-       * "@" ( Text binding / one-way binding )
-       * "=" ( Direct model binding / two-way binding )
+       * "@" ( Text binding / one-way binding - read only )
+       * "=" ( Direct model binding / two-way binding - update and read)
        * "&" ( Behaviour binding / Method binding )
        */
       scope: {
