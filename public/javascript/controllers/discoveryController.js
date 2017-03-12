@@ -2,31 +2,13 @@ angular.module('texasfossils').controller('DiscoveryController', [
   '$scope', 'AjaxService',
   function ($scope, AjaxService) {
 
-    AjaxService.httpGET('/api/images/aboutme.jpg')
-              // handle success
-              .then(function () {
-              })
-              // handle error
-              .catch(function () {
-                console.log('AJAX error');
-              });
-//              
-//            .success(function (data) {
-//              console.log('successful return from AjaxService:');
-//              console.log(data);
-//              // $scope.rest_query_test_src = 
-//            })
-//            .error(function(response, status) {
-//              console.log("HTTP GET failure response: " + response + " " + status);
-//            });
-
     $scope.preface = 'Click on any of the links under the Discovery section in the menu to learn more about some <b>really cool</b> self-made discoveries.';
 
     $scope.data = [
       {
         name: 'Xiphactinus audax',
         id: 'xiphactinus_audax',
-        // TODO: get this from the user:
+        introduction: 'Xiphactinus (from Latin and Greek for "sword-ray") is an extinct genus of large (4.5 to 6 m (15 to 20 feet) long) predatory marine bony fish that lived during the Late Cretaceous. When alive, the fish would have resembled a gargantuan, fanged tarpon (to which it was, however, not related).[3] The species Portheus molossus described by Cope is a junior synonym of X. audax. Skeletal remains of Xiphactinus have come from Kansas (where the first Xiphactinus fossil was discovered during the 1850s), and Cretaceous formations all over the East Coast (most notably Georgia, Alabama, North Carolina, and New Jersey) in the United States, as well as Europe, Australia, Canada and Venezuela. - Wikipedia',
         images: [
           {
             desc: 'Xiphactinus jaws in small fragments.',
@@ -79,10 +61,6 @@ angular.module('texasfossils').controller('DiscoveryController', [
 //        ]
 //      }
     ];
-
-    $scope.foo = function () {
-      console.log('foo called');
-    };
 
     $scope.lookup = function (search) {
       console.log('search for: ' + search);

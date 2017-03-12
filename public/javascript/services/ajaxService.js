@@ -13,14 +13,14 @@ angular.module('texasfossils').service('AjaxService', [
      */
     function getTemplate(url) {
       return $templateRequest($sce.getTrustedResourceUrl(url));
-    }
+    };
 
     /**
      * Asynchronous HTTP GET from a given url (local or remote).
      * @param {type} url
      * @returns {$q@call;defer.promise}
      */
-    this.httpGET = function (url) {
+     function httpGET(url) {
       var deferred = $q.defer();
       $http.get(url).success(function (response) {
         deferred.resolve(response);
@@ -29,11 +29,10 @@ angular.module('texasfossils').service('AjaxService', [
       });
       return deferred.promise;
     };
-
-    /**
-     * A service should have it's functions exposed either via this or in a return object.
-     */
+    
     return({
-      getTemplate: getTemplate
+      getTemplate: getTemplate,
+      httpGET: httpGET
     });
-  }]);
+  }
+]);

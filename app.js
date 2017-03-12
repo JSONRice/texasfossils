@@ -61,10 +61,11 @@ var routes = {
     api: require('./routes/api.js')
 };
 
-// view engine setup
+// view engine setup and static files from file system (server)
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')));
+app.use('/media', express.static('/media')) // images are stored here
 app.use(logger('dev'));
 
 app.use(bodyParser.json());

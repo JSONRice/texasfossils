@@ -98,9 +98,9 @@ router.get('/images', function (req, res) {
 
 ////
 // Retrieve all image documents from the Mongo images collection that are based on a file type (extension)
-// curl -H "Accept: application/json" -H "Content-type: application/json" -X GET http://<IPv4|domain>:<port>/api/images/jpg
+// curl -H "Accept: application/json" -H "Content-type: application/json" -X GET http://<IPv4|domain>:<port>/api/images/ext/jpg
 ////
-router.get('/images/:file_type', function (req, res) {
+router.get('/images/ext/:file_type', function (req, res) {
   image.find({name: req.params.file_type}, function (err, image) {
     if (err) {
       res.send(err);
@@ -111,9 +111,9 @@ router.get('/images/:file_type', function (req, res) {
 
 ////
 // Retrieve a single image documents from the Mongo images collection
-// curl -H "Accept: application/json" -H "Content-type: application/json" -X GET http://<IPv4|domain>:<port>/api/images/aboutme.jpg
+// curl -H "Accept: application/json" -H "Content-type: application/json" -X GET http://<IPv4|domain>:<port>/api/images/name/aboutme.jpg
 ////
-router.get('/images/:name', function (req, res) {
+router.get('/images/name/:name', function (req, res) {
   console.log('/images/:name');
   console.log('req.params.name: ' + req.params.name);
   image.findOne({name: req.params.name}, function (err, image) {
