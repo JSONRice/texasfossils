@@ -13,7 +13,7 @@ angular.module('texasfossils').service('AjaxService', [
      */
     function getTemplate(url) {
       return $templateRequest($sce.getTrustedResourceUrl(url));
-    };
+    }
 
     /**
      * Asynchronous HTTP GET from a given url (local or remote).
@@ -28,7 +28,7 @@ angular.module('texasfossils').service('AjaxService', [
         deferred.reject();
       });
       return deferred.promise;
-    };
+    }
     
     return({
       getTemplate: getTemplate,

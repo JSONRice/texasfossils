@@ -54,6 +54,12 @@ angular.module('texasfossils').controller('TreeController', [
                 }
               }
             ]
+          },
+          {
+            label: 'Testimonials',
+            data: {
+              url: 'templates/menu/testimonials.html'
+            }
           }
         ]
       }
