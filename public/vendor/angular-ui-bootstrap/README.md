@@ -6,14 +6,18 @@
 
 ### Quick links
 - [Demo](#demo)
+- [Angular 2](#angular-2)
 - [Installation](#installation)
     - [NPM](#install-with-npm)
     - [Bower](#install-with-bower)
     - [NuGet](#install-with-nuget)
     - [Custom](#custom-build)
     - [Manual](#manual-download)
+- [Webpack](#webpack)
 - [Support](#support)
     - [FAQ](#faq)
+    - [Code of Conduct](#code-of-conduct)
+    - [PREFIX MIGRATION GUIDE](#prefix-migration-guide)
     - [Supported browsers](#supported-browsers)
     - [Need help?](#need-help)
     - [Found a bug?](#found-a-bug)
@@ -25,10 +29,25 @@
 
 Do you want to see directives in action? Visit http://angular-ui.github.io/bootstrap/!
 
+# Angular 2
+
+Are you interested in Angular 2? We are on our way! Check out [ng-bootstrap](https://github.com/ui-bootstrap/core). 
+
 # Installation
 
 Installation is easy as UI Bootstrap has minimal dependencies - only the AngularJS and Twitter Bootstrap's CSS are required.
-Note: Since version 0.13.0, UI Bootstrap depends on [ngAnimate](https://docs.angularjs.org/api/ngAnimate) for transitions and animations, such as the accordion, carousel, etc. Include `ngAnimate` in the module dependencies for your app in order to enable animation.
+*Notes:* 
+* Since version 0.13.0, UI Bootstrap depends on [ngAnimate](https://docs.angularjs.org/api/ngAnimate) for transitions and animations, such as the accordion, carousel, etc. Include `ngAnimate` in the module dependencies for your app in order to enable animation.
+* UI Bootstrap depends on [ngTouch](https://docs.angularjs.org/api/ngTouch) for swipe actions. Include `ngTouch` in the module dependencies for your app in order to enable swiping.
+
+## Angular Requirements
+* UI Bootstrap 1.0 and higher _requires_ Angular 1.4.x or higher and it has been tested with Angular 1.4.8.
+* UI Bootstrap 0.14.3 is the _last_ version that supports Angular 1.3.x.
+* UI Bootstrap 0.12.0 is the _last_ version that supports Angular 1.2.x.
+
+## Bootstrap Requirements
+* UI Bootstrap requires Bootstrap CSS version 3.x or higher and it has been tested with Bootstrap CSS 3.3.6.
+* UI Bootstrap 0.8 is the _last_ version that supports Bootstrap CSS 2.3.x.
 
 #### Install with NPM
 
@@ -70,19 +89,42 @@ When you are done downloading all the dependencies and project files the only re
 angular.module('myModule', ['ui.bootstrap']);
 ```
 
-If you're a Browserify or Webpack user, you can do:
+# Webpack
+
+To use this project with webpack, follow the [NPM](#install-with-npm) instructions. Now, if you want to use only the accordion, you can do:
 
 ```js
-var uibs = require('angular-ui-bootstrap');
+import accordion from 'angular-ui-bootstrap/src/accordion';
 
-angular.module('myModule', [uibs]);
+angular.module('myModule', [accordion]);
 ```
+
+You can import all the pieces you need in the same way:
+
+```js
+import accordion from 'angular-ui-bootstrap/src/accordion';
+import datepicker from 'angular-ui-bootstrap/src/datepicker';
+
+angular.module('myModule', [accordion, datepicker]);
+```
+
+This will load all the dependencies (if any) and also the templates (if any).
+
+Be sure to have a loader able to process `css` files like `css-loader`.
 
 # Support
 
 ## FAQ
 
 https://github.com/angular-ui/bootstrap/wiki/FAQ
+
+# Code of Conduct
+
+Take a moment to read our [Code of Conduct](CODE_OF_CONDUCT.md)
+
+## PREFIX MIGRATION GUIDE
+
+If you're updating your application to use prefixes, please check the [migration guide](https://github.com/angular-ui/bootstrap/wiki/Migration-guide-for-prefixes).
 
 ## Supported browsers
 
@@ -94,7 +136,6 @@ Directives from this repository are automatically tested with the following brow
 * Safari
 
 Modern mobile browsers should work without problems.
-
 
 ## Need help?
 Need help using UI Bootstrap?

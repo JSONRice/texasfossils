@@ -12,7 +12,6 @@
 // Change this according to where you want to store your images:
 var rootPath = '/media/images';
 var dbName = 'texasfossils';
-var collectionName = 'images';
 
 function connect(pDbName) {
   var mongo = new Mongo();

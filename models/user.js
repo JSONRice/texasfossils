@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var passportLocalMongoose = require('passport-local-mongoose');
 
 var user = new Schema({
-  // OPTIONAL-TODO: ensure username is an email address
+  // OPTIONAL-TODO: ensure username is an email address or allow email address for login
   username: {
     type: String,
     required: true,

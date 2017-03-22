@@ -1,9 +1,13 @@
+<div class="container-fluid" ng-controller="TestimonialsController">
+  <button type="button" class="btn btn-primary" ng-click="openSubmitNewTestimonial('md')">Submit a New Testimony</button>
+</div>
+<br/>
 <div class="container-fluid" ng-repeat="testimony in data">
   <div class="row col-lg-12 col-md-12 col-sm-6">
-    <div class="well">
-      <i class="fa fa-star" aria-hidden="true"></i>
+    <div class="well well-sm">
+      <i class="fa fa-quote-left" style="font-size: 10pt;" aria-hidden="true"></i>
       <span ng-bind="testimony.text"></span>
-      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-quote-right" style="font-size: 10pt;" aria-hidden="true"></i>
       <br/><br/>
       <span ng-bind="testimony.author"></span>
       <br/>

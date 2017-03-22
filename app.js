@@ -52,9 +52,6 @@ app.use(session({
   saveUninitialized: true
 }));
 
-// Schemas:
-var image = require('./models/image.js');
-
 // set routes up:
 var routes = {
     index: require('./routes/index.js'),
@@ -65,7 +62,7 @@ var routes = {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')));
-app.use('/media', express.static('/media')) // images are stored here
+app.use('/media', express.static('/media')); // images are stored here
 app.use(logger('dev'));
 
 app.use(bodyParser.json());

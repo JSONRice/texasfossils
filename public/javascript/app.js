@@ -47,14 +47,14 @@ texasfossils.config(['$routeProvider', '$locationProvider', function ($routeProv
       controller: 'TreeController',
       access: {restricted: false}
     })
-            .when('/home', {
-              templateUrl: '../templates/home.html',
-              controller: 'HomeController',
-              access: {restricted: false}
-            })
-            .otherwise({
-              redirectTo: '/home'
-            });
+      .when('/home', {
+        templateUrl: '../templates/home.html',
+        controller: 'HomeController',
+        access: {restricted: false}
+      })
+      .otherwise({
+        redirectTo: '/home'
+      });
 
     // use the HTML5 History API
     // $locationProvider.html5Mode(true);    

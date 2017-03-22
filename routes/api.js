@@ -5,11 +5,13 @@ var router = ioc.create('router');
 var passport = require('passport');
 var user = require('../models/user.js');
 var image = require('../models/image.js');
+var testimonial = require('../models/testimonial.js');
 
 // To test route run: 
 // curl -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"username": "test@test.com", "password": "test"}' http://localhost:8000/api/register
 // Note if test fails ensure port is the startup port from the NodeJS config file (app.js)
 router.post('/register', function (req, res) {
+  console.log('/register');
   user.register(new user({username: req.body.username}), req.body.password, function (err, account) {
     if (err) {
       return res.status(500).json({err: err});
@@ -24,6 +26,7 @@ router.post('/register', function (req, res) {
 // curl -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"username": "test@test.com", "password": "test"}' http://localhost:8000/api/login
 // Note if test fails ensure port is the startup port from the NodeJS config file (app.js)
 router.post('/login', function (req, res, next) {
+  console.log('/login');
   passport.authenticate('local', function (err, user, info) {
     if (err) {
       return next(err);
@@ -44,6 +47,7 @@ router.post('/login', function (req, res, next) {
 // curl -H "Accept: application/json" -H "Content-type: application/json" -X GET http://<IPv4|domain>:<port>/api/logout
 // Note if test fails ensure port is the startup port from the NodeJS config file (app.js)
 router.get('/logout', function (req, res) {
+  console.log('/logout');
   req.logout();
   res.status(200).json({status: 'Bye!'});
 });
@@ -57,6 +61,7 @@ router.get('/logout', function (req, res) {
 // http://localhost:8000/api/users
 ////
 router.get('/users', function (req, res) {
+  console.log('/users');
   user.find(function (err, user) {
     if (err) {
       res.send(err);
@@ -74,6 +79,7 @@ router.get('/users', function (req, res) {
 // http://localhost:8000/api/findUser/test@test.com
 ////
 router.get('/findUser/:username', function (req, res) {
+  console.log('/findUser/:username');
   user.findOne({username: req.params.username}, function (err, user) {
     if (err) {
       res.send(err);
@@ -101,6 +107,7 @@ router.get('/images', function (req, res) {
 // curl -H "Accept: application/json" -H "Content-type: application/json" -X GET http://<IPv4|domain>:<port>/api/images/ext/jpg
 ////
 router.get('/images/ext/:file_type', function (req, res) {
+  console.log('/images/ext/:file_type')
   image.find({name: req.params.file_type}, function (err, image) {
     if (err) {
       res.send(err);
@@ -115,7 +122,6 @@ router.get('/images/ext/:file_type', function (req, res) {
 ////
 router.get('/images/name/:name', function (req, res) {
   console.log('/images/:name');
-  console.log('req.params.name: ' + req.params.name);
   image.findOne({name: req.params.name}, function (err, image) {
     if (err) {
       res.send(err);
@@ -123,5 +129,39 @@ router.get('/images/name/:name', function (req, res) {
     res.json(image);
   });
 });
+
+////
+// Retrieve all testimonial documents from the Mongo testimonials collection.
+// curl -H "Accept: application/json" -H "Content-type: application/json" -X GET http://<IPv4|domain>:<port>/api/testimonials
+//
+////
+router.get('/testimonials', function (req, res) {
+  console.log('/testimonials');  
+  testimonial.find(function (err, testimonial) {
+    if (err) {
+      res.send(err);
+    }
+    res.json(testimonial);
+  });
+});
+
+router.post('/uploadTestimonial', function(req, res) {
+  testimonials.upload(new testimonial({}), req.body, function(err, account) {
+  })
+});
+
+router.post('/register', function (req, res) {
+  console.log('/register');
+  user.register(new user({username: req.body.username}), req.body.password, function (err, account) {
+    if (err) {
+      return res.status(500).json({err: err});
+    }
+    passport.authenticate('local')(req, res, function () {
+      return res.status(200).json({status: 'Registration successful!'});
+    });
+  });
+});
+
+
 
 module.exports = router;
