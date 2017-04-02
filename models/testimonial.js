@@ -10,19 +10,24 @@ var Schema = mongoose.Schema;
  */
 var testimonial = new Schema({
   
-  author: { // the author's name
+  author: {
     type: String,
-    required: true,
+    required: false,
     unique: true
   },
-  authorOccupation: { // the author's occupation (e.g. community or career)
+  title: { // the author's occupation (e.g. community or career)
     type: String,
     required: false,
     unique: false
   },
-  text: { // the testimony
+  email: {
     type: String,
     required: true,
+    unique: false
+  },
+  text: {
+    type: String,
+    required: false,
     unique: true
   }
 });

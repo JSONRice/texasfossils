@@ -93,7 +93,7 @@ router.get('/findUser/:username', function (req, res) {
 // curl -H "Accept: application/json" -H "Content-type: application/json" -X GET http://<IPv4|domain>:<port>/api/images
 ////
 router.get('/images', function (req, res) {
-  console.log('/images');  
+  console.log('/images');
   image.find(function (err, image) {
     if (err) {
       res.send(err);
@@ -107,7 +107,7 @@ router.get('/images', function (req, res) {
 // curl -H "Accept: application/json" -H "Content-type: application/json" -X GET http://<IPv4|domain>:<port>/api/images/ext/jpg
 ////
 router.get('/images/ext/:file_type', function (req, res) {
-  console.log('/images/ext/:file_type')
+  console.log('/images/ext/:file_type');
   image.find({name: req.params.file_type}, function (err, image) {
     if (err) {
       res.send(err);
@@ -136,7 +136,6 @@ router.get('/images/name/:name', function (req, res) {
 //
 ////
 router.get('/testimonials', function (req, res) {
-  console.log('/testimonials');  
   testimonial.find(function (err, testimonial) {
     if (err) {
       res.send(err);
@@ -145,23 +144,19 @@ router.get('/testimonials', function (req, res) {
   });
 });
 
-router.post('/uploadTestimonial', function(req, res) {
-  testimonials.upload(new testimonial({}), req.body, function(err, account) {
-  })
-});
+////
+// Upload a single testimonial entry to Mongo.
+// curl -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"email": "test@test.com", "author": "Fred Flintstone", "title": "Rock Hound", "text": "I love Mr. Howe's attention to detail. He is the the best!"}' http://<domain|IPv4>:<port>/api/testimonials
+//
+////
+router.post('/testimonials', function (req, res) {
+  var newTestimonial = new testimonial(req.body);
+  newTestimonial.save(function (err) {
+    if (err)
+      res.send(err);
 
-router.post('/register', function (req, res) {
-  console.log('/register');
-  user.register(new user({username: req.body.username}), req.body.password, function (err, account) {
-    if (err) {
-      return res.status(500).json({err: err});
-    }
-    passport.authenticate('local')(req, res, function () {
-      return res.status(200).json({status: 'Registration successful!'});
-    });
+    res.json({message: 'uploaded'});
   });
 });
-
-
 
 module.exports = router;

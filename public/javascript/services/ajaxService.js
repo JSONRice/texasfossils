@@ -30,9 +30,27 @@ angular.module('texasfossils').service('AjaxService', [
       return deferred.promise;
     }
     
+    /**
+     * Asynchronous HTTP POST some data to the given url (local or remote).
+     * @param {type} url
+     * @param {type} data to POST
+     * @returns {$q@call;defer.promise}
+     */
+     function httpPOST(url, data) {
+      var deferred = $q.defer();
+      $http.post(url, data).success(function (response) {
+        deferred.resolve(response);
+      }).error(function (response) {
+        deferred.reject();
+      });
+      return deferred.promise;
+    }
+    
+    
     return({
       getTemplate: getTemplate,
-      httpGET: httpGET
+      httpGET: httpGET,
+      httpPOST: httpPOST
     });
   }
 ]);

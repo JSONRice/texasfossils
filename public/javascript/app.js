@@ -5,7 +5,7 @@
 
 var texasfossils = angular.module('texasfossils', [
   'ngRoute', 'ngSanitize', 'ngResource', 'ngAnimate', 'ui.bootstrap',
-  'ui.select', 'ui.keypress', 'nvd3', 'ngLodash', 'angularSpinner'
+  'ui.select', 'ui.keypress', 'nvd3', 'ngLodash', 'angularSpinner', 'noCAPTCHA'
 ]);
 
 // See: https://solidfoundationwebdev.com/blog/posts/how-to-use-underscore-in-your-angularjs-controllers
@@ -23,7 +23,11 @@ texasfossils.filter('htmlify', function ($sce) {
   };
 });
 
-texasfossils.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+texasfossils.config(['$routeProvider', '$locationProvider', 'noCAPTCHAProvider',
+  function ($routeProvider, $locationProvider, noCAPTCHAProvider) {
+    noCAPTCHAProvider.setSiteKey('<texasfossils>');
+    noCAPTCHAProvider.setTheme('dark');
+        
     // note: chain on additional route configs with .when(...)
     // The otherwise() (default) page loads from '/' and is the login page
     // All other pages should be restricted access besides the registration,
