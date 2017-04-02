@@ -53,13 +53,13 @@ angular.module('texasfossils').controller('DiscoveryController', [
             caption: "Here's a shot of the announcement in Times Square!"
           }
         ]
+      },
+      {
+        name: 'Pentanogmius',
+        id: 'pentanogmius',
+        paragraphs: [
+        ]
       }
-//      {
-//        name: 'Pentanogmius',
-//        id: 'pentanogmius',
-//        paragraphs: [
-//        ]
-//      }
     ];
 
     $scope.lookup = function (search) {

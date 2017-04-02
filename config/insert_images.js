@@ -38,7 +38,7 @@ var names = [
   'aboutme.jpg', 'display.jpg', 'favicon.ico', 'flexo_conf_2.jpg', 'flexo_conf_small.jpg',
   'flexo_times_square.jpg', 'green_cup.png', 'kris01.jpg', 'kris02.jpg', 'kris03.jpg', 'leather.png',
   'shell.png', 'swirl_pattern.png', 'texasfossils.png', 'texasfossils_black_2.png', 'texasfossils_white.png',
-  'texasfossils_white_2.png', 'xiphactinus_jaws_complete.jpg', 'xiphactinus_jaws_small.jpg', 'xiphactinus_mount.jpg'
+  'texasfossils_white_2.png', 'xiphactinus_jaws_complete.jpg', 'xiphactinus_jaws_small.jpg', 'xiphactinus_mount.jpg', 'ecphora.jpg'
 ];
 
 // insert documents in collection

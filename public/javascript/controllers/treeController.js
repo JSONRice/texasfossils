@@ -44,16 +44,22 @@ angular.module('texasfossils').controller('TreeController', [
               {
                 label: 'Flexomornis howei',
                 data: {
-                  url: "templates/menu/discoveries/flexo.html"
+                  url: 'templates/menu/discoveries/flexo.html'
                 }
               },
               {
                 label: 'Xiphactinus',
                 data: {
-                  url: "templates/menu/discoveries/xiphactinus.html"
+                  url: 'templates/menu/discoveries/xiphactinus.html'
                 }
               }
             ]
+          },
+          {
+            label: 'Rates & Services',
+            data: {
+              url: 'templates/menu/ratesAndServices.html'
+            }
           },
           {
             label: 'Testimonials',
