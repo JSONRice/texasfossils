@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 /**
- * Representation of an image model from the Mongo database. Images are
+ * Representation of a metaimage model from the Mongo database. Images are
  * represented logically via metadata with the actual images residing on
  * the web server's file system for remote retrieval. Generally the images
  * should either be a few test images stored on localhost (user's system) or

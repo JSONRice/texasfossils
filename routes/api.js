@@ -94,11 +94,18 @@ router.get('/findUser/:username', function (req, res) {
 ////
 router.get('/images', function (req, res) {
   console.log('/images');
-  image.find(function (err, image) {
+  image.find({}, function (err, images) {
     if (err) {
       res.send(err);
     }
-    res.json(image);
+
+    var imageMap = {};
+
+    images.forEach(function(image) {
+      imageMap[image._id] = image;
+    });
+
+    res.send(imageMap);    
   });
 });
 

@@ -5,7 +5,8 @@
 
 var texasfossils = angular.module('texasfossils', [
   'ngRoute', 'ngSanitize', 'ngResource', 'ngAnimate', 'ui.bootstrap',
-  'ui.select', 'ui.keypress', 'nvd3', 'ngLodash', 'angularSpinner', 'noCAPTCHA'
+  'ui.select', 'ui.keypress', 'nvd3', 'ngLodash', 'angularSpinner', 'noCAPTCHA',
+  'thatisuday.ng-image-gallery'
 ]);
 
 // See: https://solidfoundationwebdev.com/blog/posts/how-to-use-underscore-in-your-angularjs-controllers
@@ -23,11 +24,31 @@ texasfossils.filter('htmlify', function ($sce) {
   };
 });
 
-texasfossils.config(['$routeProvider', '$locationProvider', 'noCAPTCHAProvider',
-  function ($routeProvider, $locationProvider, noCAPTCHAProvider) {
+texasfossils.config([
+  '$routeProvider',
+  '$locationProvider',
+  'noCAPTCHAProvider',
+  'ngImageGalleryOptsProvider',
+  function ($routeProvider, $locationProvider,
+    noCAPTCHAProvider, ngImageGalleryOptsProvider) {
+      
+    // CAPTCHA
     noCAPTCHAProvider.setSiteKey('<texasfossils>');
     noCAPTCHAProvider.setTheme('dark');
-        
+
+    // Image Gallery
+    ngImageGalleryOptsProvider.setOpts({
+      thumbnails: true,
+      thumbSize: 100,
+      inline: false,
+      bubbles: true,
+      bubbleSize: 20,
+      imgBubbles: false,
+      bgClose: false,
+      piracy: true,
+      imgAnim: 'fadeaway'
+    });
+
     // note: chain on additional route configs with .when(...)
     // The otherwise() (default) page loads from '/' and is the login page
     // All other pages should be restricted access besides the registration,

@@ -56,6 +56,12 @@ angular.module('texasfossils').controller('TreeController', [
             ]
           },
           {
+            label: 'Gallery',
+            data: {
+              url: 'templates/menu/gallery.html'
+            }
+          },          
+          {
             label: 'Rates & Services',
             data: {
               url: 'templates/menu/ratesAndServices.html'
