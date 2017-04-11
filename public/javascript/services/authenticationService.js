@@ -10,9 +10,6 @@ angular.module('texasfossils').factory('AuthenticationService', [
     // place all data to share between controllers in here
     var data = {username: ""};
 
-    // return available functions and data for use in controllers
-    // note this is a method for sharing data between controllers and
-    // data in here is persisted (doesn't get cleared)
     return ({
       setUsername: setUsername,
       getUsername: getUsername,

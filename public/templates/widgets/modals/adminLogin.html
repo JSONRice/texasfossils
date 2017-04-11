@@ -1,0 +1,33 @@
+<div id="submitnewgalleryimagemodal" ng-controller="LoginController">
+  <div class="modal-header">
+    <h3 class="modal-title">Image Uploading Login</h3>
+  </div>
+  <form name="loginForm" ng-submit="login()" novalidate>
+    <div class="modal-body">
+      <div>
+        <div>
+          <div>
+            <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+            <!-- USERNAME -->
+            <div class="form-group" ng-class="{'has-error' : loginForm.username.$invalid && !loginForm.username.$pristine}">
+              <label>User name:</label>
+              <input type="text" name="username" class="form-control" ng-model="loginForm.username" required/>
+              <p ng-show="form.username.$invalid && !loginForm.username.$pristine" class="help-block">Username is required.</p>
+            </div>
+            <!-- PASSWORD -->
+            <div class="form-group" ng-class="{'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine}">
+              <label>Password:</label>
+              <input type="password" name="password" class="form-control" ng-model="loginForm.password" required/>
+              <p ng-show="loginForm.password.$invalid && !loginForm.password.$pristine" class="help-block">Password is required.</p>
+            </div>
+          </div>
+        </div>    
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-default" type="submit" ng-disabled="loginForm.$invalid">Login</button>
+      <button type="button" class="btn btn-default" ng-click="register()">Register</button>      
+      <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>    
+    </div>
+  </form>
+</div>

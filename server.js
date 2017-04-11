@@ -13,6 +13,8 @@ var MongoConnector = require('connect-mongo')(session);
 var debug = require('debug')('node:server');
 var fs = require('fs');
 var bodyParser = require('body-parser');
+var passport = require('passport');
+var localStrategy = require('passport-local').Strategy;
 
 // app object handle
 var app = express();
@@ -51,6 +53,22 @@ app.use(session({
   resave: true,
   saveUninitialized: true
 }));
+
+// Schemas
+var user = require('./models/user.js');
+
+// security
+app.use(require('express-session')({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new localStrategy(user.authenticate()));
+passport.serializeUser(user.serializeUser());
+passport.deserializeUser(user.deserializeUser());
 
 // set routes up:
 var routes = {

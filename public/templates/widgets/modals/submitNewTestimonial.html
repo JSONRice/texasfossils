@@ -2,11 +2,11 @@
   <div class="modal-header" style="background-color:gray;">
     <h3 class="modal-title" style="color:white;">New Testimonial</h3>
   </div>
-  <div class="modal-body">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-6">
-          <form name="form" ng-submit="ok()" novalidate>
+  <form name="form" ng-submit="ok()" novalidate>
+    <div class="modal-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
 
             <!-- NAME -->
             <div class="form-group" ng-class="{ 'has-error' : form.author.$invalid && !form.author.$pristine }">
@@ -14,31 +14,39 @@
               <input type="text" name="author" class="form-control" ng-model="formData.author" required/>
               <p ng-show="form.author.$invalid && !form.author.$pristine" class="help-block">Your name is required.</p>
             </div>
-            
+
             <!-- TITLE -->
             <div class="form-group" ng-class="{ 'has-error' : form.title.$invalid && !form.title.$pristine }">
               <label>Title (ex: "Satisfied Mom", "President, ABC Corp.", "Customer"):</label>
               <input type="text" name="name" class="form-control" ng-model="formData.title"/>
             </div>
-            
+
             <!-- EMAIL -->
             <div class="form-group" ng-class="{ 'has-error' : form.email.$invalid && !form.email.$pristine }">
               <label>Email (will be kept private):</label>
               <input type="email" name="email" class="form-control" ng-model="formData.email" required/>
               <p ng-show="form.email.$invalid && !form.email.$pristine" class="help-block">A valid email is required.</p>
             </div>
-            
+
             <!-- TESTIMONY -->
             <div class="form-group" ng-class="{ 'has-error' : form.text.$invalid && !form.text.$pristine }">
               <label>Testimonial:</label>
               <textarea name="text" class="form-control" ng-maxlength="maxCharsForTestimony" ng-model="formData.text" placeholder="Enter your testimonial here. {{maxCharsForTestimony}} characters maximum." required></textarea>
               <p ng-show="form.text.$invalid && !form.text.$pristine" class="help-block">A testimonial within <span ng-bind="maxCharsForTestimony"/> characters is required.</p>
             </div>            
-
+          </div>
+        </div>    
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
             <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Submit</button>
             <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>    
-          </form>
+          </div>
         </div>
-      </div>    
+      </div>
     </div>
-  </div>
+  </form>
+</div>

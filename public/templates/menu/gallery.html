@@ -1,30 +1,13 @@
 <div ng-controller="GalleryController" class="container-fluid">
   <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12">
-    Welcome to the gallery! The gallery is a showcase of Kris's work and other cool paleontology photos. Click on any of the thumbnail images to bring up a dynamic gallery view. <i>Like what you see?</i> Check out the <b>Rates & Services</b> page for fossil preparation work and other services. If you're an administrator, such as Kris, log in to upload and manage pictures, else scroll down past the login screen to see the gallery (read only).
+    Welcome to the gallery! The gallery is a showcase of Kris's work and other cool paleontology photos. Click on any of the thumbnail images to bring up a dynamic gallery view. <i>Like what you see?</i> Check out the <b>Rates & Services</b> page for fossil preparation work and other services. If you're an administrator, such as Kris, log in to upload and manage pictures.
   </div>
   <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12">
     <br/>
   </div>
   <div id="login" class="row col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12">
-    
-    
-    <!-- TODO: add a button to launch a modal containing the info below so it doesn't hog up the whole page -->
-    <!--
-    <form class="form-signin" ng-submit="login()" ng-controller="LoginController">
-      <h2 class="form-signin-heading">Admin Gallery Login:</h2>
-      <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
-      <label>Username</label>
-      <input type="text" class="form-control" name="username" ng-model="loginForm.username" required>
-      <label>Password</label>
-      <input type="password" class="form-control" name="password" ng-model="loginForm.password" required>
-      <div>
-        <button type="submit" class="btn btn-default">Login</button>
-        <button type="button" class="btn btn-default" ng-click="register()">Register</button>
-      </div>
-    </form>
-    -->
+    <button ng-click="openAdminLogin('sm')" class="btn btn-primary">Admin Login</button><br/><br/>
   </div>
-
   <ng-image-gallery
     images="imageMetadata"
     bubbles="true"
@@ -33,5 +16,4 @@
     bg-close="true"
     piracy="true"
     img-anim="fadeaway"></ng-image-gallery>  
-
 </div>

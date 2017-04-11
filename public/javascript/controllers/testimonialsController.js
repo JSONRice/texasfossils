@@ -83,34 +83,33 @@ angular.module('texasfossils').controller('TestimonialsController', [
       // Optional: can use this to select an item bound to the modal
       modalInstance.result.then(
         // user clicked Ok or Submit
-          function (formData) {
-            console.log('formData');
-            console.log(formData);
-            if (formData.email && formData.author && formData.text) {
-              // Whatever is submitted and what is in this controller must match
-              // because the form fields should be two-way bound with ng-model:
-              if (formData !== $scope.formData) {
-                console.warn('There is a discrepancy in the submitted form data within the TestimonialsController.');
-                return;
-              }
-              $scope.madeSelection = true;
-              // POST new testimonial:
-              ajax.httpPOST('/api/testimonials', formData)
-                .then(function (data) {
-                  if (data) {
-                    console.log("/api/testimonials responded with: " + data.message.uploaded);
-                  }
-                }, function (response, status) {
-                  console.log("HTTP GET failure response: " + response + " " + status);
-                });
-            } else {
-              console.warn('Some required form fields are incomplete. Cancelling testimonial upload.');
+        function (formData) {
+          if (formData.email && formData.author && formData.text) {
+            // Whatever is submitted and what is in this controller must match
+            // because the form fields should be two-way bound with ng-model:
+            if (formData !== $scope.formData) {
+              console.warn('There is a discrepancy in the submitted form data within the TestimonialsController.');
+              return;
             }
-          },
-          // user clicked Cancel
-            function () {
-              $scope.madeSelection = false;
-            });
-        };
-    }
+            $scope.madeSelection = true;
+            // POST new testimonial:
+            ajax.httpPOST('/api/testimonials', formData)
+              .then(function (data) {
+                if (data) {
+                  console.log("/api/testimonials responded with: " + data.message.uploaded);
+                }
+              }, function (response, status) {
+                console.log("HTTP GET failure response: " + response + " " + status);
+              });
+          } else {
+            console.warn('Some required form fields are incomplete. Cancelling testimonial upload.');
+          }
+        },
+        // user clicked Cancel
+        function () {
+          $scope.madeSelection = false;
+        }
+      );
+    };
+  }
 ]);

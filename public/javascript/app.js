@@ -31,7 +31,7 @@ texasfossils.config([
   'ngImageGalleryOptsProvider',
   function ($routeProvider, $locationProvider,
     noCAPTCHAProvider, ngImageGalleryOptsProvider) {
-      
+
     // CAPTCHA
     noCAPTCHAProvider.setSiteKey('<texasfossils>');
     noCAPTCHAProvider.setTheme('dark');
@@ -67,19 +67,13 @@ texasfossils.config([
       templateUrl: '../templates/register.html',
       controller: 'RegisterController',
       access: {restricted: false}
-    }).when('/treeTest', {
-      templateUrl: '../templates/treeTest.html',
-      controller: 'TreeController',
+    }).when('/home', {
+      templateUrl: '../templates/home.html',
+      controller: 'HomeController',
       access: {restricted: false}
-    })
-      .when('/home', {
-        templateUrl: '../templates/home.html',
-        controller: 'HomeController',
-        access: {restricted: false}
-      })
-      .otherwise({
-        redirectTo: '/home'
-      });
+    }).otherwise({
+      redirectTo: '/home'
+    });
 
     // use the HTML5 History API
     // $locationProvider.html5Mode(true);    

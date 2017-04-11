@@ -24,6 +24,11 @@
   display: none;
 }
 
+* {
+  word-wrap: break-word;
+  word-wrap: line-break;
+}
+
 /**
  * Responsive design:
  */
@@ -95,6 +100,11 @@ td, th {
   padding-left: 0px !important;
 }
 
+.modal-header, .modal-footer {
+  background-color:gray;
+  color: white;
+}
+
 p {
   margin: 20px 0px 20px 0px !important;
 } 
@@ -155,4 +165,11 @@ body {
 
 .logout-li > a {
   color: @cornflower-blue !important;    
+}
+
+#treeView {
+  width:250px;
+  background:whitesmoke;
+  border:1px solid lightgray;
+  border-radius:0px;  
 }

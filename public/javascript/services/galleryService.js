@@ -38,14 +38,12 @@ angular.module('texasfossils').service('GalleryService', [function () {
       var id = 1;
       for (var i in metaImageData) {
         var current = metaImageData[i];
-        console.log('current:');
-        console.log(current);
         formattedMetaImageData.push({
           "id": id++,
           "url": current.metadata.file_path + '/' + current.name,
           "title": current.name,
           "thumbUrl": current.metadata.file_path + '/' + current.name,
-        })
+        });
       }
       return formattedMetaImageData;
     };

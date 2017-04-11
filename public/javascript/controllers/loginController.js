@@ -10,24 +10,26 @@ angular.module('texasfossils').controller('LoginController', [
       $scope.disabled = true;
 
       AuthenticationService.login(
-              $scope.loginForm.username,
-              $scope.loginForm.password)
-              // handle success
-              .then(function () {
-                $scope.disabled = false;
-                AuthenticationService.setUsername($scope.loginForm.username);
-                $location.path('/galleryAdmin');
-                $scope.loginForm = {};
-              })
-              // handle error
-              .catch(function () {
-                $scope.error = true;
-                $scope.errorMessage = "Invalid username and/or password";
-                $scope.disabled = false;
-                $scope.loginForm = {};
-              });
+        $scope.loginForm.username,
+        $scope.loginForm.password)
+        // handle success
+        .then(function () {
+          $scope.disabled = false;
+          AuthenticationService.setUsername($scope.loginForm.username);
+          $scope.loginForm = {};
+          $location.path('/galleryAdmin');          
+        })
+        // handle error
+        .catch(function () {
+          $scope.error = true;
+          $scope.errorMessage = "Invalid username and/or password";
+          $scope.disabled = false;
+          $scope.loginForm = {};
+        });
     };
 
+    // Shouldn't need this but just in case (future functionality).
+    // See routes/api.js
     $scope.register = function () {
       // initial values
       $scope.error = false;
