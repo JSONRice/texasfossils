@@ -71,6 +71,10 @@ texasfossils.config([
       templateUrl: '../templates/home.html',
       controller: 'HomeController',
       access: {restricted: false}
+    }).when('/galleryAdmin', {
+      templateUrl: '../templates/menu/galleryAdmin.html',
+      controller: 'GalleryAdminController',
+      access: {restricted: true}
     }).otherwise({
       redirectTo: '/home'
     });

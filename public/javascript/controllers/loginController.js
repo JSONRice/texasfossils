@@ -3,7 +3,7 @@ angular.module('texasfossils').controller('LoginController', [
   '$location',
   'AuthenticationService',
   function ($scope, $location, AuthenticationService) {
-
+    
     $scope.login = function () {
       // initial values
       $scope.error = false;
@@ -17,7 +17,7 @@ angular.module('texasfossils').controller('LoginController', [
           $scope.disabled = false;
           AuthenticationService.setUsername($scope.loginForm.username);
           $scope.loginForm = {};
-          $location.path('/galleryAdmin');          
+          $location.path('/galleryAdmin');
         })
         // handle error
         .catch(function () {
@@ -34,8 +34,6 @@ angular.module('texasfossils').controller('LoginController', [
       // initial values
       $scope.error = false;
       $scope.disabled = true;
-
-      console.log('Routing to registration');
       $location.path('/register');
       $scope.disabled = false;
       $scope.loginForm = {};
