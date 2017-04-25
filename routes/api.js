@@ -130,12 +130,26 @@ router.get('/images/ext/:file_type', function (req, res) {
 // curl -H "Accept: application/json" -H "Content-type: application/json" -X GET http://<IPv4|domain>:<port>/api/images/name/aboutme.jpg
 ////
 router.get('/images/name/:name', function (req, res) {
-  console.log('/images/:name');
   image.findOne({name: req.params.name}, function (err, image) {
     if (err) {
       res.send(err);
     }
     res.json(image);
+  });
+});
+
+////
+// Retrieve all testimonial documents from the Mongo testimonials collection.
+// curl -X DELETE http://<IPv4|domain>:<port>/api/images/name/<image_name>
+////
+router.delete('/images/delete/:name', function (req, res) {
+  image.remove({name: req.params.name}, function (err, data) {    
+    if (err) {
+      res.send(err);
+    }
+    console.log('res json: ');
+    console.log(data);
+    res.json(data);
   });
 });
 

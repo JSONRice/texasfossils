@@ -68,7 +68,7 @@ angular.module('texasfossils').controller('GalleryController', [
               return;
             }
             $scope.madeSelection = true;
-// TODO: authenticate            
+// TODO: authenticate
 //            // POST new testimonial:
 //            ajax.httpPOST('/api/gallery', formData)
 //              .then(function (data) {

@@ -46,11 +46,27 @@ angular.module('texasfossils').service('AjaxService', [
       return deferred.promise;
     }
     
+    /**
+     * Asynchronous HTTP DELETE
+     * @param {type} url to delete object from
+     * @returns {$q@call;defer.promise}
+     */
+    function httpDELETE(url) {
+      var deferred = $q.defer();
+      $http.delete(url).success(function(response) {
+        deferred.resolve(response);     
+      }).error(function (response) {
+        deferred.reject();
+      });
+      return deferred.promise;
+    }
+    
     
     return({
       getTemplate: getTemplate,
       httpGET: httpGET,
-      httpPOST: httpPOST
+      httpPOST: httpPOST,
+      httpDELETE: httpDELETE
     });
   }
 ]);

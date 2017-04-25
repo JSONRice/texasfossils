@@ -45,5 +45,3 @@ for (var name in names) {
   image.name = names[name];
   db.images.insert(image);
 }
-
-

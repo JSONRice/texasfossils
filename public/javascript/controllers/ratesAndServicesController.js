@@ -19,7 +19,7 @@ angular.module('texasfossils').controller('RatesAndServices', [
       "<i>Are you looking for the highest quality fossils? Look no further than " + fossiliferous + ". I have known Mr. ER-Matheau-Raven for over ten years. He is a pleasure to work with and his fossils will amaze even the most seasoned collector.</i>"
     ];
 
-    AjaxService.httpGET('/api/images/name/ecphora.jpg')
+    AjaxService.httpGET('/api/images/name/display.jpg')
       .then(function (data) {
         if (!data) {
           console.log("HTTP GET response is empty. Check parameters.");

@@ -23,11 +23,9 @@ angular.module('texasfossils').factory('AuthenticationService', [
     
     function setUsername(username) {
       this.data.username = username;
-      console.debug('AuthenticationService->setUsername = ' + this.data.username);
     }
     
     function getUsername() {
-      console.debug('AuthenticationService->getUsername = ' + this.data.username);
       return this.data.username;
     }
 
