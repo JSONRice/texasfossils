@@ -99,7 +99,7 @@ angular.module('texasfossils').controller('TestimonialsController', [
                   console.log("/api/testimonials responded with: " + data.message.uploaded);
                 }
               }, function (response, status) {
-                console.log("HTTP GET failure response: " + response + " " + status);
+                console.log("HTTP POST failure response: " + response + " " + status);
               });
           } else {
             console.warn('Some required form fields are incomplete. Cancelling testimonial upload.');

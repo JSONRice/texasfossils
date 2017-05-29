@@ -6,6 +6,43 @@
   <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12">
     <h2 ng-bind="title"></h2>
   </div>
+
+  <form name="form" novalidate ng-submit="uploadPic(formDatt.picFile, ['png', 'jpg', 'jpeg', 'gif'])">
+    
+    <!-- IMAGE FILE -->
+    <input class="imgUploader" type="file" ngf-select ng-model="formData.picFile" name="picFile"    
+           ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="9MB"
+           ngf-model-invalid="errorFile" required>
+    <i ng-show="myForm.picFile.$error.maxSize" style="color:red;">File too large 
+      {{errorFile.size / 1000000|number:1}}MB: max 3M</i>
+    <img ng-show="myForm.file.$valid && myForm.picFile" ngf-thumbnail="picFile" class="thumb-lg">
+    <button class="btn btn-danger" ng-click="formData.picFile = null" ng-show="picFile">Remove</button>
+    <br/><br/>
+
+    <!-- IMAGE NAME -->
+    <div class="form-group" 
+         ng-class="{ 'has-error' : myForm.imgName.$invalid && !myForm.imgName.$pristine }">
+      <label>Name:</label>
+      <input type="text" name="imgName" class="form-control" 
+             ng-model="formData.imgName" required/>
+      <p ng-show="myForm.imgName.$invalid && !myForm.imgName.$pristine" 
+         class="help-block">Image name is required.</p>
+    </div>
+    <br/><br/>
+
+    <!-- CAPTION -->
+    <div ng-class="{ 'has-error' : myForm.imgCaption.$invalid && !myForm.imgCaption.$pristine }">
+      <label>Caption</label>
+      <textarea name="imgCaption" class="form-control" 
+                ng-maxlength="maxChars" ng-model="formData.imgCaption" 
+                placeholder="Enter your caption here. {{maxChars}} characters maximum." 
+                required></textarea>
+      <p ng-show="myForm.imgCaption.$invalid && !myForm.imgCaption.$pristine" 
+         class="help-block">A caption within {{maxChars}} characters is required.</p>
+    </div>            
+    <br/><br/>    
+    <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Submit</button>
+  </form>  
   <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12">
     <ng-image-gallery
       images="imageMetadata"

@@ -1,8 +1,19 @@
 <div ng-controller="RatesAndServices" class="container-fluid">
   <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12">
-    <img id='ratesAndServices' class='figure-img img-fluid img-rounded img-responsive gallery-img pull-right' style='margin-left: 15px;' ng-src="{{imageUrl}}" title="{{imageAlt}}" alt="{{imageAlt}}"/>
     <span ng-repeat="par in paragraphs">
       <p bind-html-compile="par"></p>
     </span>    
+  </div>
+  <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12">
+    <h4>Preparation of enrolled trilobite from shale:</h4>
+    <details>
+      <summary style='outline:none;cursor:pointer;'>Details</summary>
+      <span ng-repeat="par in detailsParagraphs">
+        <p bind-html-compile="par"></p>
+      </span>
+    </details>    
+    <br/>
+    <img style='display:inline-block;' id='ratesAndServicesBefore' class='figure-img img-fluid img-rounded img-responsive gallery-img' ng-src="{{imageBeforeUrl}}" title="{{imageBeforeAlt}}" alt="{{imageBeforeAlt}}"/>
+    <img style='display:inline-block;' id='ratesAndServicesAfter' class='figure-img img-fluid img-rounded img-responsive gallery-img' ng-src="{{imageAfterUrl}}" title="{{imageAfterAlt}}" alt="{{imageAfterAlt}}"/>
   </div>  
 </div>
