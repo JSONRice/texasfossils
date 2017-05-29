@@ -35,7 +35,7 @@ angular.module('texasfossils').controller('GalleryAdminController', [
             return;
           }
           console.log("reload the page");
-          $route.reload();          
+          $route.reload();
         }, function (response, status) {
           if (response && status) {
             console.log("HTTP DELETE failure response: " + response + " " + status);
