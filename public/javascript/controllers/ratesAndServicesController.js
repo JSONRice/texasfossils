@@ -3,13 +3,15 @@
  */
 angular.module('texasfossils').controller('RatesAndServices', [
   '$scope',
-  'AjaxService',
-  function ($scope, AjaxService) {
-    $scope.imageAlt = 'Anciet Ecphora.';
-    
+  function ($scope) {
     var emailAddress = "ptychodus04@yahoo.com";
     
     var fossiliferous = "<a href=\"http://www.fossiliferous.co.uk/\" class=\"fw_link_website\">FOSSILIFEROUS</a>";
+    
+    $scope.imageBeforeUrl = '../../images/before.jpg';
+    $scope.imageBeforeAlt = 'Eldredgeops rana before preparation.';    
+    $scope.imageAfterUrl = '../../images/after.jpg';
+    $scope.imageAfterAlt = 'Eldredgeops rana after preparation.';    
     
     $scope.paragraphs = [
       "<b>Fossil Preparation:</b> $45 per hour, $60 per hour for rush orders.<br/><b>*</b>Special arrangements can be made for specimens that will be donated to a museum.",
@@ -18,18 +20,10 @@ angular.module('texasfossils').controller('RatesAndServices', [
       "You can contact me at <a href=\"mailto:" + emailAddress + "\">" + emailAddress + "</a>",
       "<i>Are you looking for the highest quality fossils? Look no further than " + fossiliferous + ". I have known Mr. ER-Matheau-Raven for over ten years. He is a pleasure to work with and his fossils will amaze even the most seasoned collector.</i>"
     ];
-
-    AjaxService.httpGET('/api/images/name/display.jpg')
-      .then(function (data) {
-        if (!data) {
-          console.log("HTTP GET response is empty. Check parameters.");
-        }
-        else {
-          $scope.imageUrl = data.metadata.file_path + '/' + data.name;
-        }
-      }, function (response, status) {
-        console.log("HTTP GET failure response: " + response + " " + status);
-      });
+    
+    $scope.detailsParagraphs = [
+      "The picture on the left is of an enrolled Eldredgeops rana trilobite before preparation.<br/>The image on the right is the same specimen completed within the same hour."
+    ];
   }
 ]);
 

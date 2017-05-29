@@ -6,6 +6,14 @@ var passport = require('passport');
 var user = require('../models/user.js');
 var image = require('../models/image.js');
 var testimonial = require('../models/testimonial.js');
+var multipart = require('connect-multiparty');
+
+// Requires multiparty 
+var multiparty = require('connect-multiparty');
+var multipartyMiddleware = multiparty();
+
+// Requires controller
+var FileUploadController = require('../utils/fileUpload');
 
 // To test route run: 
 // curl -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"username": "test@test.com", "pword": "test"}' http://localhost:8000/api/register
@@ -151,6 +159,19 @@ router.delete('/images/delete/:name', function (req, res) {
     console.log(data);
     res.json(data);
   });
+});
+
+// Example endpoint
+router.post('/binaryImageUploader', multipartyMiddleware, FileUploadController.uploadFile);
+
+router.post('/images/logicalImageUpload', function(req, res) {
+  var newImage = new image(req.body);
+  newImage.save(function (err) {
+    if (err) {
+      res.send(err);
+    }
+    res.json({message: 'uploaded'});
+  }); 
 });
 
 ////

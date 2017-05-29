@@ -6,7 +6,7 @@
 var texasfossils = angular.module('texasfossils', [
   'ngRoute', 'ngSanitize', 'ngResource', 'ngAnimate', 'ui.bootstrap',
   'ui.select', 'ui.keypress', 'nvd3', 'ngLodash', 'angularSpinner', 'noCAPTCHA',
-  'thatisuday.ng-image-gallery'
+  'thatisuday.ng-image-gallery', 'ngFileUpload'
 ]);
 
 // See: https://solidfoundationwebdev.com/blog/posts/how-to-use-underscore-in-your-angularjs-controllers
