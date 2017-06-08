@@ -114,19 +114,18 @@ if (app.get('env') === 'development') {
 }
 
 // Get port from environment and store in Express:
-var port = '9457';// normalizePort(process.env.PORT || '8000');
+var port = '80';// normalizePort(process.env.PORT || '8000');
 app.set('port', port);
 
 // Create HTTP server. When web site is visited load app object.
 var server = http.createServer(app);
 
-// listen on provided port, on all network interfaces.
+// listen on provided port, on server IPv4
+var PORT = '80';
+var SERVER = '192.168.1.232';
 
-//var SERVER = '192.168.1.254';
-//var SERVER = '108.18.215.78'; 
-var PORT = '9457';
 // Can add a second middle param with the SERVER IPv4. Default is localhost.
-server.listen(PORT, function () {
+server.listen(PORT, SERVER, function () {
     // callback:
     console.log("Server listening on PORT: %s", PORT);
 });

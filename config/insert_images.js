@@ -37,10 +37,10 @@ var image = {
 var names = [
   'aboutme.jpg', 'display.jpg', 'flexo_conf_2.jpg', 'flexo_conf_small.jpg',
   'flexo_times_square.jpg', 'kris01.jpg', 'kris02.jpg', 'kris03.jpg',
-  'xiphactinus_jaws_complete.jpg', 'xiphactinus_jaws_small.jpg', 'xiphactinus_mount.jpg', 'ecphora.jpg'
+  'xiphactinus_jaws_complete.jpg', 'xiphactinus_jaws_small.jpg', 'xiphactinus_mount.jpg'
 ];
 
-// insert documents in collection
+// Insert documents in collection
 for (var name in names) {
   image.name = names[name];
   db.images.insert(image);
