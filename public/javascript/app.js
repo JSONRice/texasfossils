@@ -5,7 +5,7 @@
 
 var texasfossils = angular.module('texasfossils', [
   'ngRoute', 'ngSanitize', 'ngResource', 'ngAnimate', 'ui.bootstrap',
-  'ui.select', 'ui.keypress', 'nvd3', 'ngLodash', 'angularSpinner', 'noCAPTCHA',
+  'ui.select', 'ui.keypress', 'nvd3', 'angularSpinner', 'noCAPTCHA',
   'thatisuday.ng-image-gallery', 'ngFileUpload'
 ]);
 

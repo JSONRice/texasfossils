@@ -2,8 +2,7 @@ angular.module('texasfossils').controller('IndexController', [
   '$scope',
   '$modal',
   'indexService',
-  'lodash',
-  function($scope, $modal, indexService, _) {
+  function($scope, $modal, indexService) {
     $scope.status = {};
     $scope.status.isOpen = false;
     $scope.input = {};
@@ -13,6 +12,5 @@ angular.module('texasfossils').controller('IndexController', [
     $scope.input.states = [];
     $scope.input.disciplineStates = [];
     $scope.homeSort = {};
-    // TODO: add more functionality
   }
 ]);
