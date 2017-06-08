@@ -63,7 +63,6 @@ angular.module('texasfossils').controller('DiscoveryController', [
     ];
 
     $scope.lookup = function (search) {
-      console.log('search for: ' + search);
       return _.findWhere($scope.data, {id: search});
     };
   }
