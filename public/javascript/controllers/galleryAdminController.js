@@ -47,7 +47,6 @@ angular.module('texasfossils').controller('GalleryAdminController', [
               console.log("HTTP DELETE response is empty. Check parameters.");
               return;
             }
-            console.log("reload the page");
             $route.reload();
           }
         )
@@ -78,7 +77,6 @@ angular.module('texasfossils').controller('GalleryAdminController', [
         console.warn('GalleryAdminController attempted to delete a non-existent image.');
         return;
       }
-      console.log("remove the image");
       removeImage(imageRealName);
     };
 
@@ -96,7 +94,6 @@ angular.module('texasfossils').controller('GalleryAdminController', [
         $scope.formData.imgName = formData.picFile.name;
         ajax.httpPOST('/api/images/logicalImageUpload', $scope.formData)
           .then(function (response) {
-            console.log("/api/images/logicalImageUpload responded with: " + response.message);
             getImages();
           }, function (response) {
             console.log("HTTP POST failure response: " + response.response + " " + response.status);
@@ -115,18 +112,14 @@ angular.module('texasfossils').controller('GalleryAdminController', [
         },
         file: formData.picFile
       }, true).then(function (response) {
-        console.log('Success ' + response.config.data.file.name +
-          ' uploaded. Response: ' + response.data);
-        console.log(response.config);
-        console.log(response.config.data);
-        console.log(response.config.data.file);
-
+        // success
         $timeout(function () {
           $scope.formData.picFile.result = formData.picFile.result = response.data;
           // now that the hard file has been uploaded update the database
           logicalPost(response);
         });
       }, function (response) {
+        // error
         console.log('error');
         console.log(response);
         if (response.status > 0) {
@@ -134,7 +127,6 @@ angular.module('texasfossils').controller('GalleryAdminController', [
           console.warn($scope.errorMsg);
         }
       }, function (evt) {
-        console.log('notification');
         // Math.min is to fix IE which reports 200% sometimes
         $scope.formData.picFile.progress = formData.picFile.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
       });
