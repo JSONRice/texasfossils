@@ -161,11 +161,26 @@ router.delete('/images/delete/:name', function (req, res) {
   });
 });
 
-// Example endpoint
 router.post('/binaryImageUploader', multipartyMiddleware, FileUploadController.uploadFile);
 
 router.post('/images/logicalImageUpload', function(req, res) {
-  var newImage = new image(req.body);
+  var newImage = new image();
+  if (req.body.imgCaption) {
+    newImage.metadata.caption = req.body.imgCaption;
+  }
+  
+  if (req.body.upload_date) {
+    newImage.metadata.upload_date = req.body.upload_date;
+  }
+  
+  if (req.body.file_path) {
+    newImage.metadata.file_path = req.body.file_path;
+  } else {
+    newImage.metadata.file_path = '/media/images';
+  }
+  
+  // required:  
+  newImage.name = req.body.imgName;
   newImage.save(function (err) {
     if (err) {
       res.send(err);

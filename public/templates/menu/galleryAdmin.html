@@ -6,52 +6,56 @@
   <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12">
     <h2 ng-bind="title"></h2>
   </div>
+  <div id="form">
+    <form name="form" ng-submit="uploadPic(formData, formData.picFile, ['png', 'jpg', 'jpeg', 'gif'])" novalidate>
+      <!-- IMAGE FILE -->
+      <input class="imgUploader" 
+             style="padding: 6px 12px" 
+             type="file" ngf-select
+             ng-model="formData.picFile" name="picFile"
+             ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="9MB"
+             ngf-model-invalid="errorFile" required>
 
-  <form name="form" novalidate ng-submit="uploadPic(formDatt.picFile, ['png', 'jpg', 'jpeg', 'gif'])">
-    
-    <!-- IMAGE FILE -->
-    <input class="imgUploader" type="file" ngf-select ng-model="formData.picFile" name="picFile"    
-           ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="9MB"
-           ngf-model-invalid="errorFile" required>
-    <i ng-show="myForm.picFile.$error.maxSize" style="color:red;">File too large 
-      {{errorFile.size / 1000000|number:1}}MB: max 3M</i>
-    <img ng-show="myForm.file.$valid && myForm.picFile" ngf-thumbnail="picFile" class="thumb-lg">
-    <button class="btn btn-danger" ng-click="formData.picFile = null" ng-show="picFile">Remove</button>
-    <br/><br/>
+      <i ng-show="form.picFile.$error.maxSize" style="color:red;">File too large 
+        {{errorFile.size / 1000000|number:1}}MB: max 9M</i>
+      <img style="padding: 6px 12px" ng-show="form.file.$valid && formData.picFile" ngf-src="formData.picFile" class="thumb-lg">
+      <br/><br/>
 
-    <!-- IMAGE NAME -->
-    <div class="form-group" 
-         ng-class="{ 'has-error' : myForm.imgName.$invalid && !myForm.imgName.$pristine }">
-      <label>Name:</label>
-      <input type="text" name="imgName" class="form-control" 
-             ng-model="formData.imgName" required/>
-      <p ng-show="myForm.imgName.$invalid && !myForm.imgName.$pristine" 
-         class="help-block">Image name is required.</p>
+      <div class="row col-lg-3 col-md-3 col-sm-16 col-xs-6 col-xxs-6">
+        <!-- IMAGE CAPTION -->
+        <div class="form-group"
+             ng-class="{ 'has-error' : form.imgCaption.$invalid && !form.imgCaption.$pristine }">
+          <label>Caption</label>
+          <textarea name="imgCaption" class="form-control" 
+                    ng-maxlength="maxChars" ng-model="formData.imgCaption" 
+                    placeholder="Enter your caption here. {{maxChars}} characters maximum." 
+                    required></textarea>
+          <p ng-show="form.imgCaption.$invalid && !form.imgCaption.$pristine" 
+             class="help-block">A caption within {{maxChars}} characters is required.</p>
+        </div>
+      </div>
+      <!-- empty row -->
+      <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12">
+        <div class="row col-lg-6 col-md-6 col-sm-6 col-xs-6 col-xxs-6">
+          <span class="progress" ng-show="formData.picFile.progress >= 0">
+            <div style="width:{{formData.picFile.progress}}%" ng-bind="formData.picFile.progress + '%'"></div>
+          </span>
+          <br/>
+          <span ng-show="formData.picFile.result" style="color:green">Uploaded!</span>    
+          <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Submit</button>
+        </div>
+      </div>
+    </form>
+    <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12">
+      <ng-image-gallery
+        images="imageMetadata"
+        bubbles="true"
+        bubble-size="100"
+        img-bubbles="true"
+        bg-close="true"
+        piracy="true"
+        img-anim="fadeaway"
+        on-delete="deleteImg(img)"></ng-image-gallery>
     </div>
-    <br/><br/>
-
-    <!-- CAPTION -->
-    <div ng-class="{ 'has-error' : myForm.imgCaption.$invalid && !myForm.imgCaption.$pristine }">
-      <label>Caption</label>
-      <textarea name="imgCaption" class="form-control" 
-                ng-maxlength="maxChars" ng-model="formData.imgCaption" 
-                placeholder="Enter your caption here. {{maxChars}} characters maximum." 
-                required></textarea>
-      <p ng-show="myForm.imgCaption.$invalid && !myForm.imgCaption.$pristine" 
-         class="help-block">A caption within {{maxChars}} characters is required.</p>
-    </div>            
-    <br/><br/>    
-    <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Submit</button>
-  </form>  
-  <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12">
-    <ng-image-gallery
-      images="imageMetadata"
-      bubbles="true"
-      bubble-size="100"
-      img-bubbles="true"
-      bg-close="true"
-      piracy="true"
-      img-anim="fadeaway"
-      on-delete="deleteImg(img)"></ng-image-gallery>
   </div>
 </div>

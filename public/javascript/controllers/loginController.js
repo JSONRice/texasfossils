@@ -3,6 +3,11 @@ angular.module('texasfossils').controller('LoginController', [
   '$location',
   'AuthenticationService',
   function ($scope, $location, AuthenticationService) {
+        
+    $scope.loginForm = {
+      username: '',
+      password: ''
+    };
     
     $scope.login = function () {
       // initial values

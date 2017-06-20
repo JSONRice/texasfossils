@@ -2,11 +2,7 @@ angular.module('texasfossils').controller('MenuController', [
   '$scope',
   '$location',
   '$timeout',
-  function ($scope, $location, timeout) {
-    $scope.id = 1234;
-    console.log('id is: ' + $scope.id);
-    
-    
+  function ($scope, $location, timeout) {    
     $scope.menuData = [
       {
         image: {

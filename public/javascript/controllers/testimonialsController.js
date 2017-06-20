@@ -42,6 +42,8 @@ angular.module('texasfossils').controller('TestimonialsController', [
         }
         else {
           $scope.data = angular.copy(data);
+          console.log('data is:');
+          console.log($scope.data);
         }
       }, function (response, status) {
         console.log("HTTP GET failure response: " + response + " " + status);

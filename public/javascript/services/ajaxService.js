@@ -20,32 +20,40 @@ angular.module('texasfossils').service('AjaxService', [
      * @param {type} url
      * @returns {$q@call;defer.promise}
      */
-     function httpGET(url) {
+    function httpGET(url) {
       var deferred = $q.defer();
-      $http.get(url).success(function (response) {
-        deferred.resolve(response);
-      }).error(function (response) {
-        deferred.reject();
-      });
+      $http.get(url).then(
+        function (response) {
+          deferred.resolve(response.data);
+        }
+      ).catch(
+        function (response) {
+          deferred.reject();
+        }
+      );
       return deferred.promise;
     }
-    
+
     /**
      * Asynchronous HTTP POST some data to the given url (local or remote).
      * @param {type} url
      * @param {type} data to POST
      * @returns {$q@call;defer.promise}
      */
-     function httpPOST(url, data) {
+    function httpPOST(url, data) {
       var deferred = $q.defer();
-      $http.post(url, data).success(function (response) {
-        deferred.resolve(response);
-      }).error(function (response) {
-        deferred.reject();
-      });
+      $http.post(url, data).then(
+        function (response) {
+          deferred.resolve(response.data);
+        }
+      ).catch(
+        function (response) {
+          deferred.reject();
+        }
+      );
       return deferred.promise;
     }
-    
+
     /**
      * Asynchronous HTTP DELETE
      * @param {type} url to delete object from
@@ -53,15 +61,19 @@ angular.module('texasfossils').service('AjaxService', [
      */
     function httpDELETE(url) {
       var deferred = $q.defer();
-      $http.delete(url).success(function(response) {
-        deferred.resolve(response);     
-      }).error(function (response) {
-        deferred.reject();
-      });
+      $http.delete(url).then(
+        function (response) {
+          deferred.resolve(response.data);
+        }
+      ).catch(
+        function (response) {
+          deferred.reject();
+        }
+      );
       return deferred.promise;
     }
-    
-    
+
+
     return({
       getTemplate: getTemplate,
       httpGET: httpGET,

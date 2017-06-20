@@ -12,7 +12,11 @@ var Schema = mongoose.Schema;
  */
 var image = new Schema({
   metadata: {
-    caption: String,
+    caption: {
+      type: String,
+      required: true,
+      unique: false
+    },
     upload_date: {
       type: Date,
       default: Date.now,
@@ -24,10 +28,11 @@ var image = new Schema({
       unique: false
     }
   },
-  name: { // full name excluding the path (must have file extension to work properly)
+  // full name excluding the path (must have file extension to work properly)  
+  name: { 
     type: String,
     required: true,
-    unique: true
+    unique: false
   }
 });
 

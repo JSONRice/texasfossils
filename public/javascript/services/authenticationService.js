@@ -1,12 +1,12 @@
 angular.module('texasfossils').factory('AuthenticationService', [
-  '$q', 
-  '$timeout', 
+  '$q',
+  '$timeout',
   '$http',
   function ($q, $timeout, $http) {
 
     // user was successfully logged in ~ used for user status
     var user = null;
-    
+
     // place all data to share between controllers in here
     var data = {username: ""};
 
@@ -20,11 +20,11 @@ angular.module('texasfossils').factory('AuthenticationService', [
       register: register,
       data: data
     });
-    
+
     function setUsername(username) {
       this.data.username = username;
     }
-    
+
     function getUsername() {
       return this.data.username;
     }
@@ -44,28 +44,33 @@ angular.module('texasfossils').factory('AuthenticationService', [
 
       // send a post request to the server
       $http.post('/api/login', {
-        username: username, 
+        username: username,
         password: password
       })
         // handle success
-        .success(function (data, status) {
-          if(status === 200 && data.status){
-            user = true;
-            deferred.resolve();
-          } else {
+        .then(
+          function (response) {
+            if (response.status === 200) {
+              console.log(response);
+              user = true;
+              // resolve but don't pass data in as this isn't relevant
+              deferred.resolve();
+            } else {
+              user = false;
+              deferred.reject();
+            }
+          }
+        )
+        // handle error
+        .catch(
+          function (response) {
             user = false;
             deferred.reject();
           }
-        })
-        // handle error
-        .error(function (data) {
-          user = false;
-          deferred.reject();
-        });
+        );
 
       // return promise object
       return deferred.promise;
-
     }
 
     function logout() {
@@ -97,7 +102,7 @@ angular.module('texasfossils').factory('AuthenticationService', [
       var deferred = $q.defer();
 
       // send a post request to the server
-      
+
       $http.post('/api/register', {
         username: username,
         firstname: firstname,
@@ -105,19 +110,23 @@ angular.module('texasfossils').factory('AuthenticationService', [
         password: password
       })
         // handle success
-        .success(function (data, status) {
-          if(status === 200 && data.status){
-            deferred.resolve();
-          } else {
+        .then(
+          function (data, status) {
+            if (status === 200 && data.status) {
+              deferred.resolve();
+            } else {
+              deferred.reject();
+            }
+          }
+        )
+        // handle error
+        .catch(
+          function (data) {
             deferred.reject();
           }
-        })
-        // handle error
-        .error(function (data) {
-          deferred.reject();
-        });
+        );
 
       // return promise object
       return deferred.promise;
     }
-}]);
+  }]);
