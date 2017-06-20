@@ -9,6 +9,16 @@
   <div id="form">
     <form name="form" ng-submit="uploadPic(formData, formData.picFile, ['png', 'jpg', 'jpeg', 'gif'])" novalidate>
       <!-- IMAGE FILE -->
+      
+<!--
+      <input class="form-group imgUploader" 
+             style="padding: 6px 12px" 
+             type="file"
+             ng-model="formData.picFile" 
+             file-input
+             name="picFile" required>
+-->
+      
       <input class="imgUploader" 
              style="padding: 6px 12px" 
              type="file" ngf-select

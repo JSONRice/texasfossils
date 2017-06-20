@@ -1,8 +1,8 @@
 angular.module('texasfossils').controller('GalleryAdminController', [
   'GalleryService', 'AjaxService', '$scope',
-  '$uibModal', '$location', '$route', 'Upload', '$timeout',
+  '$uibModal', '$location', '$route', 'Upload', '$timeout', 'upload',
   function (GalleryService, ajax, $scope,
-    $uibModal, $location, $route, Upload, $timeout) {
+    $uibModal, $location, $route, Upload, $timeout, upload) {
 
     $scope.maxChars = 500;
     $scope.title = "Gallery Manager";
@@ -25,7 +25,6 @@ angular.module('texasfossils').controller('GalleryAdminController', [
             $scope.imageMetadata = [];
             $scope.imageMetadata = GalleryService.formatGalleryImageMetadata(data);
             if ($scope.imageMetadata.length > 0) {
-
               // Allow each image to be deleted (admin only):
               angular.forEach($scope.imageMetadata, function (v, k) {
                 v.deletable = true;
@@ -103,35 +102,7 @@ angular.module('texasfossils').controller('GalleryAdminController', [
             console.log("HTTP POST failure response: " + response.response + " " + response.status);
           });
       };
-      
-      console.log('uploading formData.picFile:');
-      console.log(formData.picFile);
-            
-      var transform = formData.picFile.$ngfBlobUrl.split("/");
 
-      if (transform.length <= 0) {
-        console.warn('$ngfBlobUrl invalid for uploading file');
-        return;
-      }
-      
-      console.log('transform');
-      console.log(transform);
-      
-      var ngfBlobUrlName = formData.picFile.name;
-      transform[transform.length - 1] = formData.picFile.name;
-      
-      transform = transform.join('/');
-      
-      console.log('formData.picFile.name');
-      console.log(formData.picFile.name);
-      
-      formData.picFile.$ngfBlobUrl = transform;
-      formData.picFile.$ngfDataUrl = transform;
-      
-      console.log('transform');
-      console.log(transform);
-
-      
       Upload.upload({
         url: '/api/binaryImageUploader',
         method: 'POST',
@@ -140,16 +111,16 @@ angular.module('texasfossils').controller('GalleryAdminController', [
             'application/octet-stream' : formData.picFile.type
         },
         data: {
-          filename: ngfBlobUrlName         
+          filename: formData.picFile.name
         },
         file: formData.picFile
       }, true).then(function (response) {
-        console.log('Success ' + response.config.data.file.name + 
+        console.log('Success ' + response.config.data.file.name +
           ' uploaded. Response: ' + response.data);
         console.log(response.config);
         console.log(response.config.data);
         console.log(response.config.data.file);
-        
+
         $timeout(function () {
           $scope.formData.picFile.result = formData.picFile.result = response.data;
           // now that the hard file has been uploaded update the database
