@@ -19,18 +19,18 @@ var FileUploadController = require('../utils/fileUpload');
 // curl -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"username": "test@test.com", "pword": "test"}' http://localhost:8000/api/register
 // Note if test fails ensure port is the startup port from the NodeJS config file (app.js)
 /*
-router.post('/register', function (req, res) {
-  console.log('/register');
-  user.register(new user({username: req.body.username, firstname: req.body.firstname, lastname: req.body.lastname}), req.body.password, function (err, account) {
-    if (err) {
-      return res.status(500).json({err: err});
-    }
-    passport.authenticate('local')(req, res, function () {
-      return res.status(200).json({status: 'Registration successful!'});
-    });
-  });
-});
-*/
+ router.post('/register', function (req, res) {
+ console.log('/register');
+ user.register(new user({username: req.body.username, firstname: req.body.firstname, lastname: req.body.lastname}), req.body.password, function (err, account) {
+ if (err) {
+ return res.status(500).json({err: err});
+ }
+ passport.authenticate('local')(req, res, function () {
+ return res.status(200).json({status: 'Registration successful!'});
+ });
+ });
+ });
+ */
 
 // To test route:
 // curl -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"username": "test@test.com", "password": "test"}' http://localhost:8000/api/login
@@ -111,11 +111,11 @@ router.get('/images', function (req, res) {
 
     var imageMap = {};
 
-    images.forEach(function(image) {
+    images.forEach(function (image) {
       imageMap[image._id] = image;
     });
 
-    res.send(imageMap);    
+    res.send(imageMap);
   });
 });
 
@@ -147,38 +147,49 @@ router.get('/images/name/:name', function (req, res) {
 });
 
 ////
-// Retrieve all testimonial documents from the Mongo testimonials collection.
+// Retrieve all image documents from the Mongo testimonials collection.
 // curl -X DELETE http://<IPv4|domain>:<port>/api/images/name/<image_name>
 ////
 router.delete('/images/delete/:name', function (req, res) {
-  image.remove({name: req.params.name}, function (err, data) {    
+  var name = req.params.name;
+  image.remove({name: name}, function (err, data) {
     if (err) {
       res.send(err);
     }
-    console.log('res json: ');
-    console.log(data);
+    
+    var path = '/media/images/' + name;    
+    var fs = require('fs');
+    
+    // Delete the image from the filesystem:
+    fs.unlink(path, function (err) {
+      if (err) {
+        return console.warn(err);
+      }
+      console.log("/images/delete file: " + path + " was deleted.");
+    });
+
     res.json(data);
   });
 });
 
 router.post('/binaryImageUploader', multipartyMiddleware, FileUploadController.uploadFile);
 
-router.post('/images/logicalImageUpload', function(req, res) {
+router.post('/images/logicalImageUpload', function (req, res) {
   var newImage = new image();
   if (req.body.imgCaption) {
     newImage.metadata.caption = req.body.imgCaption;
   }
-  
+
   if (req.body.upload_date) {
     newImage.metadata.upload_date = req.body.upload_date;
   }
-  
+
   if (req.body.file_path) {
     newImage.metadata.file_path = req.body.file_path;
   } else {
     newImage.metadata.file_path = '/media/images';
   }
-  
+
   // required:  
   newImage.name = req.body.imgName;
   newImage.save(function (err) {
@@ -186,7 +197,7 @@ router.post('/images/logicalImageUpload', function(req, res) {
       res.send(err);
     }
     res.json({message: 'uploaded'});
-  }); 
+  });
 });
 
 ////

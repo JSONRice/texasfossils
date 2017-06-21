@@ -1,8 +1,8 @@
 angular.module('texasfossils').controller('GalleryAdminController', [
   'GalleryService', 'AjaxService', '$scope',
-  '$uibModal', '$location', '$route', 'Upload', '$timeout', 'upload',
+  '$uibModal', '$location', '$route', 'Upload', '$timeout',
   function (GalleryService, ajax, $scope,
-    $uibModal, $location, $route, Upload, $timeout, upload) {
+    $uibModal, $location, $route, Upload, $timeout) {
 
     $scope.maxChars = 500;
     $scope.title = "Gallery Manager";
