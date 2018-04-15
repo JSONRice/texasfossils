@@ -22,7 +22,7 @@ angular.module('texasfossils').controller('RatesAndServices', [
     ];
     
     $scope.detailsParagraphs = [
-      "The picture on the left is of an enrolled Eldredgeops rana trilobite before preparation.<br/>The image on the right is the same specimen completed within the same hour."
+      "Here is an image of an enrolled Eldredgeops rana trilobite before preparation.<br/>Kris applied a micro-hammer to prepare the trilobite within the same hour. The result is a stunning piece."
     ];
   }
 ]);

@@ -1,25 +1,19 @@
 <div>
   <page-banner></page-banner>
-  <div ng-controller="TreeController" id="treeView">
-    <table>
-      <tr>
-        <td style="vertical-align:top;">
-          <div id="treeView">
-            <tree tree-data="my_data"
-                  tree-control="my_tree"
-                  on-select="my_tree_handler(branch)" 
-                  initial-selection="Menu"
-                  expand-level="2"></tree>
-          </div>
-        </td>
-        <td style="padding:20px;vertical-align:top;">
-          <div class="container" id="spa-content">                                              
-            <div class="col-lg-11 col-md-11 col-s-11 col-xs-11">                            
-              <div class="alert" bind-html-compile="output"></div>
-            </div>
-          </div>
-        </td>
-      </tr>
-    </table>
+  <div ng-controller="TreeController" class="container-fluid">
+    <div id="main" class="row">
+        <div id="treeMenu" class="col-lg-1 col-md-1">
+        <tree tree-data="my_data"
+              tree-control="my_tree"
+              on-select="my_tree_handler(branch)"
+              initial-selection="Menu"
+              expand-level="2"></tree>
+        </div>
+        <div id="spaContent" class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-xss-12">
+        <div>
+          <div class="alert" bind-html-compile="output"></div>
+        </div>
+        </div>
+    </div>
   </div>
 </div>

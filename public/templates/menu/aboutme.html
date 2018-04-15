@@ -1,6 +1,6 @@
 <div ng-controller="AboutMe" class="container-fluid">
-  <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12">
-    <img id='aboutMeImg' class='center-block img-rounded pull-right' style='margin-left: 15px;' ng-src="{{imageUrl}}" title="{{imageAlt}}" alt="{{imageAlt}}"/>
+  <div class="row col-lg-10 col-md-10">
+    <img id='aboutMeImg' class='center-block img-fluid' ng-src="{{imageUrl}}" title="{{imageAlt}}" alt="{{imageAlt}}"/>
     <span ng-repeat="par in paragraphs">
       <p ng-bind="par"></p>
     </span>    

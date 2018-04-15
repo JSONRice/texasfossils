@@ -119,7 +119,7 @@ var server = http.createServer(app);
 // listen on provided port, on server IPv4
 var PORT = 80;
 var port = PORT;
-var SERVER = '192.168.1.232';
+var SERVER = '127.0.0.1';
 
 // Can add a second middle param with the SERVER IPv4. Default is localhost.
 server.listen(PORT, SERVER, function () {

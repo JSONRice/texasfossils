@@ -6,12 +6,10 @@ angular.module('texasfossils').controller('TreeController', [
   '$timeout',
   'AjaxService',
   function ($scope, $timeout, ajax) {
-    var apple_selected;
     var tree;
-    var treedata;
 
     $scope.my_tree_handler = function (branch) {
-      $scope.output = "<h1>" + branch.label + "</h1>";
+      $scope.output = "<h2>" + branch.label + "</h2>";
       if (branch.data) {
         if (branch.data.url) {
           ajax.getTemplate(branch.data.url).then(function (html) {
@@ -22,8 +20,15 @@ angular.module('texasfossils').controller('TreeController', [
         }
       }
     };
-    
-    treedata = [{
+
+    /**
+    * Represents all the pages to be displayed on the web app.
+    *
+    * @type {[null]}
+    */
+    var treeData =
+    [
+      {
         label: 'Menu',
         data: {
           url: 'templates/menu/menu.html'
@@ -62,7 +67,7 @@ angular.module('texasfossils').controller('TreeController', [
             }
           },          
           {
-            label: 'Rates & Services',
+            label: 'Services',
             data: {
               url: 'templates/menu/ratesAndServices.html'
             }
@@ -77,7 +82,7 @@ angular.module('texasfossils').controller('TreeController', [
       }
     ];    
 
-    $scope.my_data = angular.copy(treedata);
+    $scope.my_data = angular.copy(treeData);
     $scope.my_tree = tree = {};
   }
 ]);

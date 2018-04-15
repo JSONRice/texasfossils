@@ -20,13 +20,33 @@
 @maroon: #A52A2A;
 @darkmaroon: #5E1D3A;
 
+img {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+#detailedSummary {
+  margin-bottom: 1rem;
+}
+
+#spaContent {
+  margin-left: 3.4rem;
+}
+
+
 .hide {
   display: none;
 }
 
+#treeMenu {
+  box-sizing: content-box;
+  padding-left: 0 !important;
+  padding-right: 2.3rem;
+}
+
 * {
   word-wrap: break-word;
-  word-wrap: line-break;
 }
 
 /**
@@ -48,9 +68,28 @@
 }
 
 /********** Small devices only **********/
-@media (min-width: 0px) and (max-width: 991px) {    
+@media (min-width: 0px) and (max-width: 991px) {
+  * {
+    font-size: 16pt;
+  }
+
   .responsive-break {
     .hide;
+  }
+
+  #treeMenu, .caption, #spaContent {
+    width: 100%;
+  }
+
+  #spaContent {
+    margin-left: 0;
+  }
+
+  .gallery-img {
+    max-width: 250px !important;
+    max-height: 400px !important;
+    width: auto;
+    height: auto;
   }
 }
 
@@ -67,13 +106,17 @@
 
 .gallery-img {
   max-width: 600px;
-  max-height: 600px;
+  //max-height: 600px;
   width: auto;
-  height: auto;
+  //height: auto;
   padding-bottom: 10px;
 }
 
 /* BOOSTRAP OVERRIDES */
+
+.container, .container-fluid {
+
+}
 
 body {
   font: 'Arial', 'Times New Roman';
@@ -85,13 +128,11 @@ figure {
 }
 
 figcaption { 
-  display: table-caption; 
   caption-side: bottom;
 }
 
 label {
   text-decoration: none;
-  font-style: none;
   font-size: 10pt;
 }
 
@@ -111,7 +152,11 @@ td, th {
 
 p {
   margin: 20px 0px 20px 0px !important;
-} 
+}
+
+.nav {
+  display: block; // By default Boostrap nav display is Flexbox. Disable this as Flexbox does some odd wrapping.
+}
 
 .navbar-brand {
   height: 90px;
@@ -121,11 +166,13 @@ body {
   background-image: url("../../images/leather.png");
 }
 
+// Most of these styles for navbar are Bootstrap overrides
 .navbar {
-  margin-bottom: 0px !important;
-  border: 0px !important;
-  border-radius: 0px !important;
+  margin-bottom: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
   background-color: @charcoal;
+  padding: 0 !important;
 }
 
 .home-tree {
@@ -171,11 +218,10 @@ body {
   color: @cornflower-blue !important;    
 }
 
-#treeView {
-  width:250px;
+#treeMenu {
   background:whitesmoke;
   border:1px solid lightgray;
-  border-radius:0px;  
+  border-radius: 0;
 }
 
 .thumb {
