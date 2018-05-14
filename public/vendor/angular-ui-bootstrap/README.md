@@ -3,6 +3,7 @@
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/angular-ui/bootstrap?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://secure.travis-ci.org/angular-ui/bootstrap.svg)](http://travis-ci.org/angular-ui/bootstrap)
 [![devDependency Status](https://david-dm.org/angular-ui/bootstrap/dev-status.svg?branch=master)](https://david-dm.org/angular-ui/bootstrap#info=devDependencies)
+[![CDNJS](https://img.shields.io/cdnjs/v/angular-ui-bootstrap.svg)](https://cdnjs.com/libraries/angular-ui-bootstrap/)
 
 ### Quick links
 - [Demo](#demo)
@@ -13,7 +14,7 @@
     - [NuGet](#install-with-nuget)
     - [Custom](#custom-build)
     - [Manual](#manual-download)
-- [Webpack](#webpack)
+- [Webpack / JSPM](#webpack--jspm)
 - [Support](#support)
     - [FAQ](#faq)
     - [Code of Conduct](#code-of-conduct)
@@ -27,16 +28,16 @@
 
 # Demo
 
-Do you want to see directives in action? Visit http://angular-ui.github.io/bootstrap/!
+Do you want to see directives in action? Visit https://angular-ui.github.io/bootstrap/!
 
 # Angular 2
 
-Are you interested in Angular 2? We are on our way! Check out [ng-bootstrap](https://github.com/ui-bootstrap/core). 
+Are you interested in Angular 2? We are on our way! Check out [ng-bootstrap](https://github.com/ui-bootstrap/core).
 
 # Installation
 
 Installation is easy as UI Bootstrap has minimal dependencies - only the AngularJS and Twitter Bootstrap's CSS are required.
-*Notes:* 
+*Notes:*
 * Since version 0.13.0, UI Bootstrap depends on [ngAnimate](https://docs.angularjs.org/api/ngAnimate) for transitions and animations, such as the accordion, carousel, etc. Include `ngAnimate` in the module dependencies for your app in order to enable animation.
 * UI Bootstrap depends on [ngTouch](https://docs.angularjs.org/api/ngTouch) for swipe actions. Include `ngTouch` in the module dependencies for your app in order to enable swiping.
 
@@ -73,7 +74,7 @@ PM> Install-Package Angular.UI.Bootstrap
 
 #### Custom build
 
-Head over to http://angular-ui.github.io/bootstrap/ and hit the *Custom build* button to create your own custom UI Bootstrap build, just the way you like it.
+Head over to https://angular-ui.github.io/bootstrap/ and hit the *Custom build* button to create your own custom UI Bootstrap build, just the way you like it.
 
 #### Manual download
 
@@ -89,9 +90,10 @@ When you are done downloading all the dependencies and project files the only re
 angular.module('myModule', ['ui.bootstrap']);
 ```
 
-# Webpack
+# Webpack / JSPM
 
-To use this project with webpack, follow the [NPM](#install-with-npm) instructions. Now, if you want to use only the accordion, you can do:
+To use this project with webpack, follow the [NPM](#install-with-npm) instructions.
+Now, if you want to use only the accordion, you can do:
 
 ```js
 import accordion from 'angular-ui-bootstrap/src/accordion';
@@ -111,6 +113,31 @@ angular.module('myModule', [accordion, datepicker]);
 This will load all the dependencies (if any) and also the templates (if any).
 
 Be sure to have a loader able to process `css` files like `css-loader`.
+
+If you would prefer not to load your css through your JavaScript file loader/bundler, you can choose to import the `index-nocss.js` file instead, which is available for the modules:
+* carousel
+* datepicker
+* datepickerPopup
+* dropdown
+* modal
+* popover
+* position
+* timepicker
+* tooltip
+* typeahead
+
+The other modules, such as `accordion` in the example below, do not have CSS resources to load, so you should continue to import them as normal:
+
+```js
+import accordion from 'angular-ui-bootstrap/src/accordion';
+import typeahead from 'angular-ui-bootstrap/src/typeahead/index-nocss.js';
+
+angular.module('myModule', [accordion, typeahead]);
+```
+
+# Versioning
+
+Pre-2.0.0 does not follow a particular versioning system. 2.0.0 and onwards follows [semantic versioning](http://semver.org/). All release changes can be viewed on our [changelog](CHANGELOG.md).
 
 # Support
 

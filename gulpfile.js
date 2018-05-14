@@ -13,7 +13,7 @@ var merge = require('merge-stream');
 
 // Lint (JSHint) Task
 gulp.task('lint', function () {
-  return gulp.src([    
+  return gulp.src([
     './controllers/**/*.js',
     './models/**/*.js',
     './routes/**/*.js',
@@ -52,7 +52,7 @@ gulp.task('style', function () {
 
 // Convert Angular templates into a cache file
 gulp.task('templates', function () {
-  return gulp.src('./public/templates/*.html')
+  return gulp.src('./public/templates/**/*.html')
           .pipe(templateCache('templates.js', {module: 'texasfossils'}))
           .pipe(gulp.dest('./public/javascript/dist'));
 });
@@ -151,7 +151,7 @@ gulp.task('test-server', function () {
 });
 
 // Watch Files For Changes
-gulp.task('watch', ['dev'], function () {
+gulp.task('watch', ['dev', 'templates'], function () {
   // Let the html templates compile first that way there aren't any load conflicts with the JS
   gulp.watch('./public/templates/**/*.html', ['concat']);
   gulp.watch('./public/javascript/**/*.js', ['concat']);

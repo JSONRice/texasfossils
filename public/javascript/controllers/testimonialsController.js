@@ -42,15 +42,13 @@ angular.module('texasfossils').controller('TestimonialsController', [
         }
         else {
           $scope.data = angular.copy(data);
-          console.log('data is:');
-          console.log($scope.data);
         }
       }, function (response, status) {
         console.log("HTTP GET failure response: " + response + " " + status);
       });
 
     $scope.openSubmitNewTestimonial = function (size) {
-      $scope.modalInstance('../../templates/widgets/modals/submitNewTestimonial.html', size);
+      $scope.modalInstance("widgets/modals/submitNewTestimonial.html", size);
     };
 
 
@@ -71,7 +69,6 @@ angular.module('texasfossils').controller('TestimonialsController', [
           };
         },
         size: size,
-        // Don't use 'this' here just use the controller $scope with all the properties
         scope: $scope,
         // pass any data to modal controller here:
         resolve: {
