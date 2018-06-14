@@ -41,7 +41,7 @@ angular.module('texasfossils').service('GalleryService', [function () {
         formattedMetaImageData.push({
           "id": id++,
           "url": current.metadata.file_path + '/' + current.name,
-          "title": current.name,
+          "title": current.metadata.caption,
           "thumbUrl": current.metadata.file_path + '/' + current.name,
         });
       }
